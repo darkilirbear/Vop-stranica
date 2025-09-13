@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kup Kvarnera - VOP SUP Klub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .toggle-btn {
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+    .toggle-btn:hover {
+      color: #005fa3;
+    }
+    .toggle-icon {
+      font-weight: bold;
+    }
+	
+	.segment-box {
+  background-color: #fef6f3; /* nježno bež/roza kao u PDF-u */
+  border-left: 6px solid #f97316; /* narančasta traka s lijeve strane */
+}
+
+  </style>
+  
+  <style>
+.nav-link.active {
+  color: #f97316; /* narančasta */
+  text-decoration: underline wavy #f97316;
+  text-underline-offset: 4px;
+}
+</style>
+
+</head>
+<body class="font-sans text-gray-800">
+
+ 
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+
+    <!-- Lijeva strana: Logo + Navigacija -->
+    <div class="flex items-center gap-8">
+      <!-- Logo -->
+      <a href="index.html">
+        <img src="slike/logo/logo.jpg" alt="VOP Logo" class="h-12 w-auto">
+      </a>
+
+      <!-- Navigacija -->
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Početna stranica</a>
+        <a href="o nama.html" class="text-gray-700 hover:text-blue-600">O nama</a>
+        <a href="Kup kvarnera.html" class="nav-link active">Kup Kvarnera</a>
+        <a href="SUP za sve.html" class="text-gray-700 hover:text-blue-600">SUP za sve</a>
+      </nav>
+    </div>
+
+    <!-- Desna strana: Društvene mreže -->
+    <div class="flex items-center gap-4">
+      <a href="https://www.facebook.com/vopsupteam" target="_blank">
+        <img src="slike/media/fb.jpg" alt="Facebook" class="h-7 w-7 hover:opacity-80">
+      </a>
+      <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+        <img src="slike/media/ig.jpg" alt="Instagram" class="h-7 w-7 hover:opacity-80">
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = Array.from(document.querySelectorAll('.nav-link'));
+  if (!links.length) return;
+
+  const base = document.baseURI || window.location.href; // radi i s file://
+  const currUrl = new URL(window.location.href, base);
+  const currPath = decodeURIComponent(currUrl.pathname || '').replace(/^\/+/, '').toLowerCase();
+  const currFile = currPath.split('/').pop() || '';
+
+  function normalizeName(s) {
+    return (s || '').toString()
+      .toLowerCase()
+      .replace(/%20/g, ' ')
+      .replace(/[-_]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  // 
+  links.forEach(l => l.classList.remove('active'));
+
+  let matched = false;
+
+  links.forEach(link => {
+    try {
+      const linkHref = link.getAttribute('href') || '';
+      const linkUrl = new URL(linkHref, base);
+      const linkPath = decodeURIComponent(linkUrl.pathname || '').replace(/^\/+/, '').toLowerCase();
+      const linkFile = linkPath.split('/').pop() || '';
+
+      // 
+      if (linkPath === currPath || linkFile === currFile) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+      // 
+      const indexNames = ['', 'index.html', 'index.htm', '/'];
+      if ((indexNames.includes(linkPath) && indexNames.includes(currPath)) ||
+          (indexNames.includes(linkFile) && indexNames.includes(currFile))) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+      // 
+      const linkNoExt = linkFile.replace(/\.[^/.]+$/, '');
+      const currNoExt = currFile.replace(/\.[^/.]+$/, '');
+      if (normalizeName(linkNoExt) === normalizeName(currNoExt)) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+    } catch (e) {
+      // 
+    }
+  });
+
+  // 
+  if (!matched) {
+    const currBaseName = normalizeName(currFile.replace(/\.[^/.]+$/, ''));
+    links.forEach(link => {
+      if (normalizeName(link.textContent || '') === currBaseName) {
+        link.classList.add('active');
+        matched = true;
+      }
+    });
+  }
+});
+</script>
+
+
+</header>
+
+  <!-- HERO -->
+<section 
+  class="relative bg-cover bg-center text-white py-24 px-6 text-center"
+  style="background-image: url('slike/banner/kupkvarnerahero.jpg');"
+
+>
+  <!-- Tamni overlay da se tekst bolje vidi -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Tekst iznad slike -->
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4"></h1>
+  </div>
+</section>
+
+
+
+  <!-- GODINE -->
+  <!-- GODINE -->
+  <section class="py-12 px-6 max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-center md:justify-between items-center gap-4 mb-8">
+
+      <!-- Naslov -->
+      <h2 id="yearTitle" class="text-3xl md:text-4xl font-extrabold text-blue-800">
+        Regate 2025
+      </h2>
+
+      <!-- Selector -->
+      <select id="yearSelect" 
+        class="px-4 py-2 rounded-lg font-semibold text-white bg-orange-500 hover:bg-orange-600 
+               focus:outline-none focus:ring-2 focus:ring-orange-400 cursor-pointer">
+        <option value="2025">Regate 2025</option>
+        <option value="2024">Regate 2024</option>
+        <option value="2023">Regate 2023</option>
+        <option value="2022">Regate 2022</option>
+        <option value="2021">Regate 2021</option>
+      </select>
+
+    </div>
+
+    <div id="yearContent" class="space-y-4 text-lg leading-relaxed text-gray-700 text-center">
+      <!-- Tekst i popis regata -->
+    </div>
+
+    <div id="segmentsContainer" class="mt-12 grid gap-6 max-w-3xl mx-auto"></div>
+  </section>
+
+
+  <!-- FOOTER -->
+   <!-- KONTAKT -->
+   <footer class="py-10 px-6 text-sm" style="background-color: #41479d; color: white;">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <!-- Lijeva strana - tekst -->
+    <div>
+      <h2 class="text-xl font-bold mb-4">Kontakt</h2>
+      <p>SPORTSKO REKREACIJSKI KLUB "SUP TEAM VOLOSKO-OPATIJA-PRELUK"</p>
+      <p>Email: <a href="mailto:vopsupteam@gmail.com" class="underline">vopsupteam@gmail.com</a></p>
+      <p>Tel: 0959025061</p>
+      <p>Adresa: Put uz dol 7, 51410 Opatija</p>
+      <p>OIB: 98170007481</p>
+      <p>IBAN: HR4024020061101026326 (Erste&Steiermärkische Bank)</p>
+    </div>
+
+    <!-- Desna strana - logo -->
+    <div>
+      <img src="slike/logo/logo2.jpg" alt="VOP Logo" class="h-60 w-auto">
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
+
+
+  <script>
+  const regateData = {
+  2025: {
+    intro: `I ove godine, veslamo zajedno uz najljepšu obalu sjevernog Jadrana!<br><br>
+            5. SUP Kup Kvarnera 2025 okuplja rekreativce, natjecatelje i zaljubljenike u more iz cijele regije - na seriji dinamičnih i prijateljski natjecateljskih regata koje slave sport, zajedništvo i prirodu.<br><br>
+            Pridruži nam se - bilo da si spreman za postolje ili tek krećeš s prvim zaveslajem.<br><br>
+            Vidimo se na startnoj liniji!`,
+    events: [],
+    segments: [
+      {
+        title: "12.7.2025. 1. Kačjak regata",
+        content: `
+          <p><strong>SUP Kup Kvarnera po prvi put stiže na Kačjak!</strong> Nova lokacija, poznati duh – regata uz podršku
+          sponzora Jadran Crikvenica – Hotels & Camps obećava dobru stazu, sjajnu atmosferu i bogate nagrade.</p>
+
+          <br><p><strong>Nagrade za najbolje natjecatelje (M/Ž):</strong></p>
+          <ul class="list-disc list-inside text-left">
+            <li>1. mjesto: 2 noćenja za 2 osobe u bungalovima (ovisno o raspoloživosti) + besplatan parking</li>
+            <li>2. mjesto: masaža + trajni lak (žene) / poklon paket (muškarci)</li>
+            <li>3. mjesto: 2 ležaljke + 2 pizze + jednodnevni parking</li>
+          </ul>
+
+          <br><p><strong>Svi natjecatelji mogu računati na:</strong></p>
+          <ul class="list-disc list-inside text-left">
+            <li>start paket</li>
+            <li>ručak</li>
+            <li>DJ glazbu</li>
+            <li>besplatan parking</li>
+            <li>promotivne cijene noćenja</li>
+          </ul>
+
+          <br><p>Kačjak regata najavljuje dobru vožnju, odličnu ekipu i još jednu ljetnu SUP subotu za pamćenje. 
+          <br>Vidimo se na startu!	  
+          <br><strong>Vidimo se na sljedećoj stanici Kupa!</strong></p>
+        `
+      },
+      {
+        title: "26./27.7.2025. 4. Najviša SUP regata Fužine",
+        content: `
+          <p>SUP Kup Kvarnera vraća se u srce Gorskog kotara – na jezero Bajer, gdje nas čeka najviša regata sezone,
+          u doslovnom i prenesenom smislu. Dvodnevni program, sjajna priroda, odlična ekipa i miris šume – sve je spremno
+          za još jedan gorski SUP spektakl.</p>
+
+          <br><p><strong>Program regate:</strong></p>
+          <ul class="list-disc list-inside text-left">
+            <li><strong>Subota:</strong> Sprint & Technical race – sistem ispadanja, brzo i dinamično</li>
+            <li><strong>Nedjelja:</strong> Kružna regata – duljine 2 / 4 / 6 km, prema kategoriji</li>
+          </ul>
+
+          <br><p>Nagrade dolaze od lokalnih OPG-ova i partnera, uz posebne nagrade <strong>Polleo Sporta</strong>.</p>
+
+          <br><p>Hranu i dobru atmosferu osigurava <strong>Beach bar Hunter</strong>, a u organizaciji sudjeluju i 
+          <strong>Općina Fužine</strong> te <strong>TZ Fužine</strong>.</p>
+
+          <br><p>Regata se boduje za <strong>SUP Pokal Slovenije</strong>, što znači međunarodnu konkurenciju i dodatni
+          sportski izazov.</p>
+
+          <br><p><strong>Pridruži se i veslaj gdje zrak miriši na bor i jezero zrcali oblake.  
+          <br>Vidimo se na najvišoj točki ljeta!</strong></p>
+        `
+      },
+      {
+        title: "23.08.2025. 3. Kup Ičića",
+        content: `
+          <p>Treće izdanje Kupa Ičića vraća nas na jednu od najživljih lokacija SUP Kupa Kvarnera.  
+          Regata se odvija uz samu plažu, s beach startom i ciljem, u ambijentu prepunom kupača i prolaznika.</p>
+
+          <br><p>Zbog atraktivne lokacije i dobre atmosfere, regatu već tradicionalno vole i naši prijatelji iz Slovenije,  
+          pa se i ove godine boduje za <strong>SUP Pokal Slovenije</strong>.</p>
+
+          <br><p>Prijave se vrše direktno na obali, a dodatni benefiti uključuju kamp i parking u hladu.</p>
+
+          <br><p>Za glazbenu podlogu i opušteno ozračje brine se <strong>DJ</strong>.</p>
+        `
+      },
+      {
+        title: "30.08.2025. Regata Volosko / Proglašenje kupa",
+        content: `
+          <p><strong>Volosko, 30. kolovoza ili 13. rujna 2025.</strong> (datum uskoro potvrđujemo).</p>
+
+          <br><p>Volosko ponovno okuplja veslače, gledatelje i prijatelje SUP-a na regati koja se već više od desetljeća održava uz istu obalu – i s istim guštom.</p>
+
+          <br><p>Ovu regatu su pokrenuli <strong>DSNM Volosko</strong> i <strong>Caffe bar Vološćica</strong>, a mi s ponosom nastavljamo tu priču.</p>
+
+          <br><p>Zahvaljujući specifičnoj konfiguraciji obale, Volosko nudi izvrsnu vidljivost za publiku i zanimljivu stazu za natjecatelje.  
+          A uz regatu – tu je i ono po čemu je poznata: <strong>roštilj koji se ne propušta</strong>.</p>
+        `
+      }
+    ]
+  },
+      
+    2024: {
+  intro: `Fiumanka se po prvi put bodovala za SUP Pokal Slovenije, a Fužine su ponovno postale domaćin dvodnevnog SRL formata.<br><br>
+Organizirali smo i Long Distance regatu (12 km), a Preluk i Ičići također su ušli u bodovanje za slovenski kup.<br><br>
+Zbog onečišćenja mora, regatu u Ičićima zamijenili smo s dvije regate u Voloskom.
+Sve smo odradili bez greške – organizacijski, komunikacijski i logistički.<br><br>
+Pohvale su stizale sa svih strana: iz Grada, od gradonačelnika, načelnika općina i voditelja turističkih zajednica.`,
+  events: [],
+  segments: [
+    {
+      title: "Sveukupni plasman za 2024",
+      content: `
+        <div class="bg-orange-50 p-6 rounded-lg text-left">
+          <h3 class="text-xl font-bold mb-4">Sveukupni plasman za 2024</h3>
+
+          <p class="font-semibold">Dječaci do 10 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Aron Uzarević</li>
+            <li>🥈 Ruben Uzarević</li>
+            <li>🥉 Oscar Radovanović</li>
+          </ul>
+
+          <p class="font-semibold">Djevojčice do 10 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Greta Veršić</li>
+            <li>🥈 Noeli Poljugovac</li>
+            <li>🥉 Alma Ivukajger</li>
+          </ul>
+
+          <p class="font-semibold">Dječaci od 10-14 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Patrik Bačić</li>
+            <li>🥈 Val Milat</li>
+            <li>🥉 Felix Tomažić</li>
+          </ul>
+
+          <p class="font-semibold">Djevojčice od 10-14 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Stella Veršić</li>
+            <li>🥈 Gaia Tomažić</li>
+            <li>🥉 Paola Stojadinović</li>
+          </ul>
+
+          <p class="font-semibold">Fun Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Igor Tomažić</li>
+            <li>🥈 Boris Badun</li>
+            <li>🥉 Nino Bačić</li>
+          </ul>
+
+          <p class="font-semibold">Fun Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Tamara Sparažić</li>
+            <li>🥈 Iva Juračić Milat</li>
+            <li>🥉 Milena Gojda Tomažić</li>
+          </ul>
+
+          <p class="font-semibold">Race Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Klemen Marolt</li>
+            <li>🥈 Andrej Matacin</li>
+            <li>🥉 Goran Simirčić SUPoljubac</li>
+          </ul>
+
+          <p class="font-semibold">Race Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Stanislava Laginja</li>
+            <li>🥈 Anamarija Grbčić-Pahlić</li>
+            <li>🥉 Nataša Srdoč</li>
+          </ul>
+
+          <p class="font-semibold">Elite Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Luka Kožar</li>
+            <li>🥈 Domagoj Pauković</li>
+            <li>🥉 Erik Milat</li>
+          </ul>
+
+          <p class="font-semibold">Elite Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Maja Dolžan</li>
+            <li>🥈 Nataša Cesar</li>
+            <li>🥉 Lisa Schiffner</li>
+          </ul>
+        </div>
+      `
+    }
+  ]
+},
+
+    2023: {
+  intro: `Ponovno Fiumanka, Fužine – koje sada postaju dvodnevna manifestacija s SRL Europskom ligom za napuhane SUP-ove (sprint 200 m s okretima).  <br><br>
+          Uz standardne postaje (Preluk, Kostrena, Ičići), regate su bile stabilne, dobro organizirane i posjećene.  <br><br>
+          Ukupno 5 regata – s još boljom organizacijskom rutinom.`,
+  events: [],
+  segments: [
+    {
+      title: "Sveukupni plasman za 2023",
+      content: `
+        <div class="bg-orange-50 p-6 rounded-lg text-left">
+          <h3 class="text-xl font-bold mb-4">Sveukupni plasman za 2023</h3>
+
+          <p class="font-semibold">Dječaci do 10 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Patrik Bačić</li>
+            <li>🥈 Tian Tomažić</li>
+            <li>🥉 Felix Tomažić</li>
+          </ul>
+
+          <p class="font-semibold">Djevojčice do 10 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Greta Veršić</li>
+            <li>🥈 Emili Zimmermann</li>
+          </ul>
+
+          <p class="font-semibold">Dječaci od 10-14 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Nino Bačić</li>
+            <li>🥈 Val Milat</li>
+            <li>🥉 Frano Poropat</li>
+          </ul>
+
+          <p class="font-semibold">Djevojčice od 10-14 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Stella Veršić</li>
+            <li>🥈 Gaia Tomažić</li>
+            <li>🥉 Valentina Gržančić</li>
+          </ul>
+
+          <p class="font-semibold">Fun Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Nino Bačić</li>
+            <li>🥈 Boris Badun</li>
+            <li>🥉 Marko Zimmermann</li>
+          </ul>
+
+          <p class="font-semibold">Fun Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Tamara Sparažić</li>
+            <li>🥈 Marijana Poropat</li>
+            <li>🥉 Nikolina Nikolić</li>
+          </ul>
+
+          <p class="font-semibold">Race Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Klemen Marolt</li>
+            <li>🥈 Andrej Matacin</li>
+            <li>🥉 Goran Simičić SUPoljubac</li>
+          </ul>
+
+          <p class="font-semibold">Race Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Gabrijela Badun</li>
+            <li>🥈 Stanislava Laginja</li>
+            <li>🥉 Anamarija Grbčić Pahlić</li>
+          </ul>
+
+          <p class="font-semibold">Elite Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Luka Kožar</li>
+            <li>🥈 Domagoj Pauković</li>
+            <li>🥉 Emilio Bačić</li>
+          </ul>
+
+          <p class="font-semibold">Elite Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Maja Dolžan</li>
+            <li>🥈 Radmila Bačić</li>
+            <li>🥉 Nataša Cesar</li>
+          </ul>
+        </div>
+      `
+    }
+  ]
+},
+
+    2022: {
+  intro: `Krenuli smo ponovno s Fiumankom – ali sada već sigurni u to što radimo.  <br><br>
+           Te godine regatama su se pridružile i Fužine, tada jednodnevni događaj koji je potvrdio da znamo kako organizirati manifestaciju i u planinama,
+		   ne samo na moru.  <br><br>
+           Kostrena je oduševila kao lokacija uz plažu i Beach bar Me Gusta, a vratili smo se i na Volosko i Preluk.  
+           Organizirali smo i Long Distance regatu od Preluka do Ičića, no jak vjetar (bura) pretvorio je to natjecanje u logistički izazov – 
+		   sudionici su se vraćali pješice, brodovima, kako su znali i umjeli.  <br><br>
+           Težak dan, ali ogromna škola – više smo naučili iz te situacije nego iz deset tečajeva organizacije.`,
+  events: [],
+  segments: [
+    {
+      title: "Sveukupni plasman za 2022",
+      content: `
+        <div class="bg-orange-50 p-6 rounded-lg text-left">
+          <h3 class="text-xl font-bold mb-4">Sveukupni plasman za 2022</h3>
+
+          <p class="font-semibold">Dječaci do 9 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Patrik Bačić</li>
+            <li>🥈 Tian Tomažić</li>
+            <li>🥉 Nejc Špelič</li>
+          </ul>
+
+          <p class="font-semibold">Djevojčice do 9 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Monika Poščić</li>
+            <li>🥈 Greta Veršić</li>
+            <li>🥉 Alma Fuxjager</li>
+          </ul>
+
+          <p class="font-semibold">Dječaci od 10-14 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Nino Bačić</li>
+            <li>🥈 Val Milat</li>
+            <li>🥉 Andre Poropat</li>
+          </ul>
+
+          <p class="font-semibold">Djevojčice od 10-14 godina</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Stella Veršić</li>
+            <li>🥈 Stella Šegota</li>
+            <li>🥉 Gaia Tomažić</li>
+          </ul>
+
+          <p class="font-semibold">Fun Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Gordan Poščić</li>
+            <li>🥈 Luka Matušić</li>
+            <li>🥉 Roland Poropat</li>
+          </ul>
+
+          <p class="font-semibold">Fun Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Ana Bosak Veršić</li>
+            <li>🥈 Marijana Poropat</li>
+            <li>🥉 Tamara Sparažić</li>
+          </ul>
+
+          <p class="font-semibold">Race Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Klemen Marolt</li>
+            <li>🥈 Andrej Matacin</li>
+            <li>🥉 Goran Simičić SUPoljubac</li>
+          </ul>
+
+          <p class="font-semibold">Race Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Anamarija Grbčić Pahlić</li>
+            <li>🥈 Cesar Nataša</li>
+            <li>🥉 Ana Bosak Veršić</li>
+          </ul>
+
+          <p class="font-semibold">Elite Muški</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Andrej Špelič</li>
+            <li>🥈 Luka Kožar</li>
+            <li>🥉 Domagoj Pauković</li>
+          </ul>
+
+          <p class="font-semibold">Elite Žene</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>🥇 Maja Dolžan</li>
+            <li>🥈 Radmila Bačić</li>
+            <li>🥉 Maša Matjaž</li>
+          </ul>
+        </div>
+      `
+    }
+  ]
+},
+
+   2021: {
+    intro: `Samo 20 dana nakon osnutka kluba, uskočili smo ravno u duboko – s 1. Fiumankom u samom centru Rijeke. 
+    Nije bilo mjesta za pogreške, ali uspjeli smo. <br><br>
+    Iza sebe smo već imali nekoliko organiziranih regata i iskustva, no trema i odgovornost bili su stvarni.  
+    Uspješna organizacija Fiumanke i pohvale koje smo primili – od samih organizatora i predstavnika Grada – dale su nam samopouzdanje da nastavimo dalje. <br><br>
+    U toj prvoj godini održali smo čak 7 regata i 2 promocije, uključujući Volosko, Preluk i Kostrenu.`,
+    events: [],
+    segments: [
+      {
+        title: "Sveukupni plasman za 2021",
+        content: `
+          <div class="bg-orange-50 p-6 rounded-lg text-left">
+            <h3 class="text-xl font-bold mb-4">Sveukupni plasman za 2021</h3>
+
+            <p class="font-semibold">Elite Muški</p>
+            <ul class="list-disc list-inside mb-4">
+              <li>🥇 Željko Srdoč</li>
+              <li>🥈 Luka Kožar</li>
+              <li>🥉 Bačić Emilio</li>
+            </ul>
+
+            <p class="font-semibold">Elite Žene</p>
+            <ul class="list-disc list-inside mb-4">
+              <li>🥇 Maja Dolžan</li>
+              <li>🥈 Radmila Bačić</li>
+              <li>🥉 Nataša Srdoč</li>
+            </ul>
+          </div>
+        `
+      }
+    ]
+  }
+};
+
+  let currentYear = 2025;
+
+  function renderYear(year) {
+    document.getElementById("yearTitle").textContent = `Regate ${year}`;
+    const data = regateData[year];
+
+    document.getElementById("yearContent").innerHTML = `
+      <p>${data.intro}</p>
+      <ul class="mt-4 space-y-2">
+        ${data.events.map(e => `<li>${e}</li>`).join('')}
+      </ul>
+    `;
+
+    const segmentsContainer = document.getElementById("segmentsContainer");
+    segmentsContainer.innerHTML = data.segments.map(seg => `
+      <div class="segment-box shadow rounded-lg p-6 text-center">
+        <button class="toggle-btn flex justify-center items-center gap-2 mx-auto text-blue-600 font-semibold text-lg">
+          <span class="toggle-icon text-2xl">+</span> ${seg.title}
+        </button>
+        <div class="toggle-content mt-4 hidden text-gray-700">
+          <p>${seg.content}</p>
+        </div>
+      </div>
+    `).join('');
+
+    // toggle logika
+    segmentsContainer.querySelectorAll('.toggle-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const content = btn.parentElement.querySelector('.toggle-content');
+        const icon = btn.querySelector('.toggle-icon');
+        if (content.classList.contains('hidden')) {
+          content.classList.remove('hidden');
+          icon.textContent = '−';
+        } else {
+          content.classList.add('hidden');
+          icon.textContent = '+';
+        }
+      });
+    });
+  }
+
+  // selector event
+  document.getElementById("yearSelect").addEventListener("change", (e) => {
+    currentYear = parseInt(e.target.value);
+    renderYear(currentYear);
+  });
+
+  // init
+  renderYear(currentYear);
+</script>
+</body>
+</html>
