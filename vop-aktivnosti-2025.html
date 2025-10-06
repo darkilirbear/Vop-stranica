@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOP aktivnosti u 2025.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-sans text-gray-800">
+
+  <!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    
+    <!-- Logo -->
+    <a href="index.html">
+      <img src="slike/logo/logo.jpg" alt="VOP Logo" class="h-12 w-auto">
+    </a>
+
+    <!-- Desktop navigacija -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+    </nav>
+
+    <!-- Hamburger za mobitele -->
+    <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+      ☰
+    </button>
+
+    <!-- Društvene mreže (uvijek desno) -->
+    <div class="hidden md:flex items-center gap-4">
+      <a href="https://www.facebook.com/vopsupteam" target="_blank">
+        <img src="slike/media/fb.jpg" alt="Facebook" class="h-7 w-7 hover:opacity-80">
+      </a>
+      <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+        <img src="slike/media/ig.jpg" alt="Instagram" class="h-7 w-7 hover:opacity-80">
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <nav class="flex flex-col p-4 gap-4 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+      <div class="flex gap-4 mt-2">
+        <a href="https://www.facebook.com/vopsupteam" target="_blank">
+          <img src="slike/media/fb.jpg" alt="Facebook" class="h-6 w-6 hover:opacity-80">
+        </a>
+        <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+          <img src="slike/media/ig.jpg" alt="Instagram" class="h-6 w-6 hover:opacity-80">
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+
+
+<style>
+  /* Stil za sve linkove */
+  .nav-link {
+    color: #f97316; /* narančasta */
+    position: relative;
+  }
+
+  /* Aktivni link: narančasta valovita crta */
+  .nav-link.active {
+    text-decoration: underline wavy #f97316;
+    text-underline-offset: 4px;
+  }
+</style>
+
+
+</header>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <a href="index.html" class="text-blue-600 hover:underline block mb-6">&larr; Natrag</a>
+
+    <h1 class="text-3xl font-bold text-blue-800 mb-6">VOP aktivnosti u 2025.</h1>
+
+    <ol class="list-decimal pl-6 space-y-4 text-lg leading-relaxed">
+      <li>SUP Expirience x5   7.06./21.06./ 5.07./ 19.07./ 1.08. u suradnji sa TZ Opatija Radionice SUPanja za odrasle</li>
+      <li>Noćna tura x 5 19.06. i 26.6., 18.07./ 8.08./ 5.09. (u suradnji sa TZ Opatija *3 i  PGŽ *2)</li>
+      <li>SUPer Školica: Mala škola supanja koja će se organizirati u 6, 7 i 8 mjesecu i to 16.06./ 18.06./ 20.06./ 23.06./ 27.06./ 30.06./ 2.07./ 4.07./  7.07./ 9.07./ 11.07./ 14.07./ 16.07./ 18.07./ 18.08./ 20.08. / 22.8./ 25.08./ 27.08./ 29.08. Kao i prošle godine, ukoliko vremenski uvjeti dozvole, mala škola realizirat će se i u rujnu 2025.)
+</li>
+      <li>Promocija supa u suradnji sa školom Opatija i školom Matulji</li>
+      <li>Uskršnja tura u suradnji sa TZ Opatija</li>
+      <li>Promocija supa kod sportske dvorane Orange Movement u Kastvu u 5 ili 6 mjesecu</li>
+      <li>SUPer Fitness 2x tjedno kroz ljeto – TZ Opatija? SUP dock</li>
+      <li>Promocija sporta na Platku 1 nedjelja u 6 mjesecu i sportska dvorana Opatija u 9 mjesecu</li>
+      <li>12.04. promocija na festivalu Opatija</li>
+      <li>5. KUP Kvarnera 4 utrke 15.6. Fiumanka, 26./27.7. Fužine, 23.8. Ičići, 30.8. Volosko</li>
+      <li>Pokrenut proces upisa u Savez Kajakaški, pa kad nas prime i upis u Savez Opatijskih sportova</li>
+    </ol>
+  </main>
+
+  <!-- FOOTER -->
+  <!-- KONTAKT -->
+   <footer class="py-10 px-6 text-sm" style="background-color: #41479d; color: white;">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <!-- Lijeva strana - tekst -->
+    <div>
+      <h2 class="text-xl font-bold mb-4">Kontakt</h2>
+      <p>SPORTSKO REKREACIJSKI KLUB "SUP TEAM VOLOSKO-OPATIJA-PRELUK"</p>
+      <p>Email: <a href="mailto:vopsupteam@gmail.com" class="underline">vopsupteam@gmail.com</a></p>
+      <p>Tel: 0959025061</p>
+      <p>Adresa: Put uz dol 7, 51410 Opatija</p>
+      <p>OIB: 98170007481</p>
+      <p>IBAN: HR4024020061101026326 (Erste&Steiermärkische Bank)</p>
+    </div>
+
+    <!-- Desna strana - logo -->
+    <div>
+      <img src="slike/logo/logo2.jpg" alt="VOP Logo" class="h-60 w-auto">
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

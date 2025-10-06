@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOP ima klupsku kućicu!</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-sans text-gray-800">
+
+  <!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    
+    <!-- Logo -->
+    <a href="index.html">
+      <img src="slike/logo/logo.jpg" alt="VOP Logo" class="h-12 w-auto">
+    </a>
+
+    <!-- Desktop navigacija -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+    </nav>
+
+    <!-- Hamburger za mobitele -->
+    <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+      ☰
+    </button>
+
+    <!-- Društvene mreže (uvijek desno) -->
+    <div class="hidden md:flex items-center gap-4">
+      <a href="https://www.facebook.com/vopsupteam" target="_blank">
+        <img src="slike/media/fb.jpg" alt="Facebook" class="h-7 w-7 hover:opacity-80">
+      </a>
+      <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+        <img src="slike/media/ig.jpg" alt="Instagram" class="h-7 w-7 hover:opacity-80">
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <nav class="flex flex-col p-4 gap-4 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+      <div class="flex gap-4 mt-2">
+        <a href="https://www.facebook.com/vopsupteam" target="_blank">
+          <img src="slike/media/fb.jpg" alt="Facebook" class="h-6 w-6 hover:opacity-80">
+        </a>
+        <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+          <img src="slike/media/ig.jpg" alt="Instagram" class="h-6 w-6 hover:opacity-80">
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+
+
+<style>
+  /* Stil za sve linkove */
+  .nav-link {
+    color: #f97316; /* narančasta */
+    position: relative;
+  }
+
+  /* Aktivni link: narančasta valovita crta */
+  .nav-link.active {
+    text-decoration: underline wavy #f97316;
+    text-underline-offset: 4px;
+  }
+</style>
+
+  <!-- CONTENT -->
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <a href="index.html" class="text-blue-600 hover:underline block mb-6">&larr; Natrag</a>
+
+    <h1 class="text-3xl font-bold text-blue-800 mb-6">VOP ima klupsku kućicu!</h1>
+
+    <p class="mb-4">Naš SUP klub konačno ima svoju klupsku kućicu!</p>
+
+    <p class="mb-4">
+      Na mjestu gdje se more i zajedništvo spajaju, stvorili smo prostor koji će biti srce kluba – dom opreme, ideja, planova i druženja.
+    </p>
+
+    <p class="mb-4">
+      Smještena uz obalu u Voloskom, kućica je puno više od spremišta za daske. Ona je polazna točka svih naših tura, regata i školica, zaklon od vjetra i sunce za kavu nakon veslanja.
+      Bit će tu mjesta za radionice, edukacije, dogovore i spontane razgovore, za djecu, seniore, trenere, članove, prijatelje i sve vas koji volite biti na vodi – i uz nju.
+    </p>
+
+    <p class="mb-4">
+      Zahvaljujemo svima koji su pomogli u ovom velikom koraku – od grada i zajednice do vrijednih ruku naših članova.
+    </p>
+
+    <p class="mb-4">
+      S veseljem otvaramo vrata novog poglavlja.<br/>
+      Vidimo se na dasci. I ispred kućice.
+    </p>
+
+    <p class="mb-6">💙 Vaš VOP</p>
+
+    <img src="slike/slika30kuca.jpg" alt="VOP klupska kućica" class="rounded-lg shadow-md">
+  </main>
+
+  <!-- FOOTER -->
+ <!-- KONTAKT -->
+   <footer class="py-10 px-6 text-sm" style="background-color: #41479d; color: white;">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <!-- Lijeva strana - tekst -->
+    <div>
+      <h2 class="text-xl font-bold mb-4">Kontakt</h2>
+      <p>SPORTSKO REKREACIJSKI KLUB "SUP TEAM VOLOSKO-OPATIJA-PRELUK"</p>
+      <p>Email: <a href="mailto:vopsupteam@gmail.com" class="underline">vopsupteam@gmail.com</a></p>
+      <p>Tel: 0959025061</p>
+      <p>Adresa: Put uz dol 7, 51410 Opatija</p>
+      <p>OIB: 98170007481</p>
+      <p>IBAN: HR4024020061101026326 (Erste&Steiermärkische Bank)</p>
+    </div>
+
+    <!-- Desna strana - logo -->
+    <div>
+      <img src="slike/logo/logo2.jpg" alt="VOP Logo" class="h-60 w-auto">
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

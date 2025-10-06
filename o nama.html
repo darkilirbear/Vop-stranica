@@ -1,0 +1,404 @@
+<html lang="hr">
+
+<link rel="stylesheet" href="style.css">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOP SUP Klub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+   <style>
+.nav-link.active {
+  color: #f97316; /* narančasta */
+  text-decoration: underline wavy #f97316;
+  text-underline-offset: 4px;
+}
+</style>
+
+</head>
+<!-- NAVIGACIJA -->
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    
+    <!-- Logo -->
+    <a href="index.html">
+      <img src="slike/logo/logo.jpg" alt="VOP Logo" class="h-12 w-auto">
+    </a>
+
+    <!-- Desktop navigacija -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+    </nav>
+
+    <!-- Hamburger za mobitele -->
+    <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+      ☰
+    </button>
+
+    <!-- Društvene mreže (uvijek desno) -->
+    <div class="hidden md:flex items-center gap-4">
+      <a href="https://www.facebook.com/vopsupteam" target="_blank">
+        <img src="slike/media/fb.jpg" alt="Facebook" class="h-7 w-7 hover:opacity-80">
+      </a>
+      <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+        <img src="slike/media/ig.jpg" alt="Instagram" class="h-7 w-7 hover:opacity-80">
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <nav class="flex flex-col p-4 gap-4 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+      <div class="flex gap-4 mt-2">
+        <a href="https://www.facebook.com/vopsupteam" target="_blank">
+          <img src="slike/media/fb.jpg" alt="Facebook" class="h-6 w-6 hover:opacity-80">
+        </a>
+        <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+          <img src="slike/media/ig.jpg" alt="Instagram" class="h-6 w-6 hover:opacity-80">
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = Array.from(document.querySelectorAll('.nav-link'));
+  if (!links.length) return;
+
+  const base = document.baseURI || window.location.href; // radi i s file://
+  const currUrl = new URL(window.location.href, base);
+  const currPath = decodeURIComponent(currUrl.pathname || '').replace(/^\/+/, '').toLowerCase();
+  const currFile = currPath.split('/').pop() || '';
+
+  function normalizeName(s) {
+    return (s || '').toString()
+      .toLowerCase()
+      .replace(/%20/g, ' ')
+      .replace(/[-_]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  // 
+  links.forEach(l => l.classList.remove('active'));
+
+  let matched = false;
+
+  links.forEach(link => {
+    try {
+      const linkHref = link.getAttribute('href') || '';
+      const linkUrl = new URL(linkHref, base);
+      const linkPath = decodeURIComponent(linkUrl.pathname || '').replace(/^\/+/, '').toLowerCase();
+      const linkFile = linkPath.split('/').pop() || '';
+
+      // podudaranje
+      if (linkPath === currPath || linkFile === currFile) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+      // 
+      const indexNames = ['', 'index.html', 'index.htm', '/'];
+      if ((indexNames.includes(linkPath) && indexNames.includes(currPath)) ||
+          (indexNames.includes(linkFile) && indexNames.includes(currFile))) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+      // 
+      const linkNoExt = linkFile.replace(/\.[^/.]+$/, '');
+      const currNoExt = currFile.replace(/\.[^/.]+$/, '');
+      if (normalizeName(linkNoExt) === normalizeName(currNoExt)) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+    } catch (e) {
+      // 
+    }
+  });
+
+  // 
+  if (!matched) {
+    const currBaseName = normalizeName(currFile.replace(/\.[^/.]+$/, ''));
+    links.forEach(link => {
+      if (normalizeName(link.textContent || '') === currBaseName) {
+        link.classList.add('active');
+        matched = true;
+      }
+    });
+  }
+});
+</script>
+
+
+</header>
+
+<!-- HERO -->
+  <section 
+  class="relative bg-cover bg-center text-white py-24 px-6 text-center"
+  style="background-image: url('slike/banner/onamabanner.jpg');"
+
+>
+  <!-- Tamni overlay -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Tekst iznad slike -->
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4"></h1>
+  </div>
+</section>
+
+
+<!-- TEKST + GALERIJA -->
+<section class="bg-white py-12 px-6 max-w-6xl mx-auto">
+  <!-- Tekst -->
+  <div class="mb-8 text-center">
+    <p class="text-lg leading-relaxed mb-4">
+      SUP Team VOP osnovan je 2021. godine s jednostavnom misijom - više kretanja, više zdravlja i više vremena provedenog na moru. Kroz uspravno veslanje (SUP) promoviramo sport koji je dostupan svima: djeci, odraslima i onima koji veslaju u zlatnim godinama.
+    </p>
+	<p class="text-lg leading-relaxed">
+  </p>
+    <p class="text-lg leading-relaxed mb-4">
+      Od tada, VOP je izrastao u aktivnu zajednicu koja vesla, uči i raste zajedno. Organiziramo regate, radionice i rekreativne ture, surađujemo s lokalnim školama, zajednicom i turističkim partnerima te stvaramo programe koji spajaju ljude i prirodu.
+    </p>
+	<p class="text-lg leading-relaxed">
+  </p>
+    <p class="text-lg leading-relaxed">
+Poseban naglasak stavljamo na sigurnost na vodi, očuvanje okoliša i uključivost - jer veslanje nije rezervirano samo za sportaše, već za svakoga tko voli more, kretanje i dobru energiju.    </p>
+  </p>
+  <p class="text-lg leading-relaxed">
+  </p>
+  
+  <p class="text-lg leading-relaxed">
+  Naš tim čine licencirani treneri, stručnjaci za rad s djecom, zdravstveni djelatnici i predani volonteri koji žive ono što rade. Redovno sudjelujemo na događanjima iz područja sporta, zdravlja i održivog turizma, i uvijek smo spremni na još jedan zaveslaj.
+  </p>
+  </div>
+
+  <!-- Galerija (Swiper) -->
+  <div class="swiper mySwiper onama-swiper rounded-lg shadow-lg">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="slike/onama/o1.jpg" class="w-full rounded-lg" alt="Slika 1"></div>
+      <div class="swiper-slide"><img src="slike/onama/o2.jpg" class="w-full rounded-lg" alt="Slika 2"></div>
+      <div class="swiper-slide"><img src="slike/onama/o3.jpg" class="w-full rounded-lg" alt="Slika 3"></div>
+	  <div class="swiper-slide"><img src="slike/onama/o0.jpg" class="w-full rounded-lg" alt="Slika 1"></div>
+      <div class="swiper-slide"><img src="slike/onama/o4.jpg" class="w-full rounded-lg" alt="Slika 2"></div>
+      <div class="swiper-slide"><img src="slike/onama/o5.jpg" class="w-full rounded-lg" alt="Slika 3"></div>
+	  <div class="swiper-slide"><img src="slike/onama/o6.jpg" class="w-full rounded-lg" alt="Slika 1"></div>
+      <div class="swiper-slide"><img src="slike/onama/o7.jpg" class="w-full rounded-lg" alt="Slika 2"></div>
+      <div class="swiper-slide"><img src="slike/onama/o8.jpg" class="w-full rounded-lg" alt="Slika 3"></div>
+	  <div class="swiper-slide"><img src="slike/onama/o9.jpg" class="w-full rounded-lg" alt="Slika 1"></div>
+      <div class="swiper-slide"><img src="slike/onama/o10.jpg" class="w-full rounded-lg" alt="Slika 2"></div>
+      <div class="swiper-slide"><img src="slike/onama/o11.jpg" class="w-full rounded-lg" alt="Slika 3"></div>
+	  <div class="swiper-slide"><img src="slike/onama/o12.jpg" class="w-full rounded-lg" alt="Slika 1"></div>
+      <div class="swiper-slide"><img src="slike/onama/o13.jpg" class="w-full rounded-lg" alt="Slika 2"></div>
+      <div class="swiper-slide"><img src="slike/onama/o14.jpg" class="w-full rounded-lg" alt="Slika 3"></div>
+	  <div class="swiper-slide"><img src="slike/onama/o15.jpg" class="w-full rounded-lg" alt="Slika 1"></div>
+      <div class="swiper-slide"><img src="slike/onama/o16.jpg" class="w-full rounded-lg" alt="Slika 2"></div>
+      <div class="swiper-slide"><img src="slike/onama/o17.jpg" class="w-full rounded-lg" alt="Slika 3"></div>
+	  <div class="swiper-slide"><img src="slike/onama/o18.jpg" class="w-full rounded-lg" alt="Slika 1"></div>
+      <div class="swiper-slide"><img src="slike/onama/o19.jpg" class="w-full rounded-lg" alt="Slika 2"></div>
+      
+    </div>
+    <!-- Navigacija -->
+    <div class="swiper-button-next text-orange-500"></div>
+    <div class="swiper-button-prev text-orange-500"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- Swiper CSS & JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".mySwiper", {
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  });
+</script>
+
+<!-- UPRAVA KLUBA -->
+<section class="text-white py-16" style="background-color: #41479d; color: white;">>
+  <div class="max-w-6xl mx-auto px-6 text-center">
+   <h2 class="text-3xl font-bold mb-12 text-white">Uprava kluba</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+      
+      <!-- Član 1 -->
+      <div class="text-center">
+        <img src="slike/clanovi/c1.jpg" alt="Igor Tomažić" 
+             class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-md">
+        <h3 class="text-xl font-bold">Igor Tomažić Mići</h3>
+        <p class="italic text-sm">Predsjednik i trener</p>
+        <p class="mt-2 text-sm">Jedan od osnivača i pokretač VOP-a, s vizijom da SUP postane dostupan svakome tko voli more i pokret.</p>
+      </div>
+
+      <!-- Član 2 -->
+      <div class="text-center">
+        <img src="slike/clanovi/c3.jpg" alt="Iva Juračić" 
+             class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-md">
+        <h3 class="text-xl font-bold">Iva Juračić Milat</h3>
+        <p class="italic text-sm">Potpredsjednica i trenerica</p>
+        <p class="mt-2 text-sm">Dugogodišnja sportašica i entuzijastica rekreacije na vodi. Iva unosi energiju, disciplinu i timski duh u svaki val VOP-a – s daske i izvan nje.</p>
+      </div>
+
+      <!-- Član 3 -->
+      <div class="text-center">
+        <img src="slike/clanovi/c2.jpg" alt="Milena Golja" 
+             class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-md">
+        <h3 class="text-xl font-bold">Milena Golja Tomažić</h3>
+        <p class="italic text-sm">Tajnica</p>
+        <p class="mt-2 text-sm">Organizacijski kompas kluba – Milena stoji iza svakog rasporeda, dogovora i natječaja. Njena strast prema redu, ljudima i moru čini da sve teče glatko, baš kao dobra tura na bonaci.</p>
+      </div>
+
+      <!-- Član 4 -->
+      <div class="text-center">
+        <img src="slike/clanovi/c4.jpg" alt="Erik Milat" 
+             class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-md">
+        <h3 class="text-xl font-bold">Erik Milat</h3>
+        <p class="italic text-sm">Trener</p>
+        <p class="mt-2 text-sm">Kao jedan od vodećih trenera u VOP-u, donosi široko iskustvo – od trkaćih staza do utrka izdržljivosti i sportova snage.</p>
+      </div>
+
+      <!-- Član 5 -->
+      <div class="text-center">
+        <img src="slike/clanovi/c5.jpg" alt="Klemen Marott" 
+             class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-md">
+        <h3 class="text-xl font-bold">Klemen Marott</h3>
+        <p class="italic text-sm">Trener</p>
+        <p class="mt-2 text-sm">Trener tenisa s 15 godina iskustva, triatlonac, trkač, biciklist i zaljubljenik u SUP. U sportu od malena, danas s veseljem dijeli znanje i na dasci.</p>
+      </div>
+
+      <!-- Član 6 -->
+      <div class="text-center">
+        <img src="slike/clanovi/c6.jpg" alt="Doggy & Nešo" 
+             class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border-4 border-white shadow-md">
+        <h3 class="text-xl font-bold">Doggy & Nešo</h3>
+        <p class="italic text-sm">Maskota</p>
+        <p class="mt-2 text-sm">Backstage duo iza svih događaja i regata. Jer netko mora vrtit’ i šale i burgere dok drugi veslaju.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ZA MEDIJE -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-12">Za medije</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Kvadratić -->
+      <a href="https://drive.google.com/file/d/1oKZ3ReeNpiJOsBuailGVGm7OJbhCu-kj/view?usp=sharing" download class="bg-orange-500 text-white py-8 rounded-lg shadow-md hover:bg-orange-600 transition">
+        <h3 class="text-xl font-semibold">Logo</h3>
+        <p class="mt-2">Preuzmi</p>
+      </a>
+
+      <a href="docs/fotografije.pdf" download class="bg-orange-500 text-white py-8 rounded-lg shadow-md hover:bg-orange-600 transition">
+        <h3 class="text-xl font-semibold">Fotografije</h3>
+        <p class="mt-2">Preuzmi</p>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1hq6AxAsU3sCJBjGATNX2JKeqZU_ULXjD/view?usp=sharing" download class="bg-orange-500 text-white py-8 rounded-lg shadow-md hover:bg-orange-600 transition">
+        <h3 class="text-xl font-semibold">Statut kluba</h3>
+        <p class="mt-2">Preuzmi</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SUPorteri -->
+<section class="py-12 bg-white text-center">
+  <h2 class="text-2xl font-bold mb-6">SUPporteri</h2>
+  <div class="max-w-5xl mx-auto">
+   <img src="slike/sponzori/sponzori.jpg" alt="VOP Logo" class="h-100 w-auto">
+  </div>
+</section>
+
+
+
+    <!-- POVIJEST SUP-a -->
+<section class="py-12 px-6 text-center" style="background-color: #41479d; color: white;">
+  <h2 class="text-2xl font-bold mb-6 text-white">Povijest SUP-a</h2>
+  
+  <p class="mb-6 text-lg leading-relaxed">
+    <p>Uspravno veslanje na dasci, poznato kao SUP (Stand Up Paddleboarding), ima korijene dublje nego što mnogi misle. Prije više od 3000 godina, peruanski ribari koristili su "caballitos de totora" – nestabilne čamce od trske – stojeći i veslajući kako bi lovili ribu i surfali natrag na obalu.</p>
+    
+    <p>Slične prakse postojale su i u drugim kulturama: afrički ratnici stajali su u kanuima, a venecijanski gondolijeri stoljećima su veslali stojeći.</p>
+    
+    <p>Moderni SUP oblikovao se na Havajima 1940-ih, gdje su instruktori surfanja, poznati kao "Waikiki Beach Boys", stajali na daskama s veslima kako bi bolje nadzirali učenike i valove.</p>
+    
+    <p>Pravu popularnost SUP je stekao početkom 2000-ih zahvaljujući surferima poput Lairda Hamiltona i Davea Kalame, koji su ga koristili za treninge na mirnim danima.</p>
+    
+    <p>Danas je SUP globalni fenomen – od rekreativnih tura i joge na dasci do natjecanja i ekspedicija. Njegova pristupačnost i povezanost s prirodom čine ga savršenim za sve generacije.</p>
+    
+    <p>U VOP-u vjerujemo da SUP nije samo sport, već način života – spoj pokreta, mora i zajedništva.</p>
+  </div>
+
+  <div class="mt-8">
+    <p class="font-semibold mb-4">Video: Kratka povijest SUP</p>
+    <iframe width="100%" height="400" src="https://www.youtube.com/embed/BXqjXdXKc3Q" title="Povijest SUP-a" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
+
+    
+  </section>
+
+   <!-- KONTAKT -->
+   <footer class="py-10 px-6 text-sm" style="background-color: #41479d; color: white;">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <!-- Lijeva strana - tekst -->
+    <div>
+      <h2 class="text-xl font-bold mb-4">Kontakt</h2>
+      <p>SPORTSKO REKREACIJSKI KLUB "SUP TEAM VOLOSKO-OPATIJA-PRELUK"</p>
+      <p>Email: <a href="mailto:vopsupteam@gmail.com" class="underline">vopsupteam@gmail.com</a></p>
+      <p>Tel: 0959025061</p>
+      <p>Adresa: Put uz dol 7, 51410 Opatija</p>
+      <p>OIB: 98170007481</p>
+      <p>IBAN: HR4024020061101026326 (Erste&Steiermärkische Bank)</p>
+    </div>
+
+    <!-- Desna strana - logo -->
+    <div>
+      <img src="slike/logo/logo2.jpg" alt="VOP Logo" class="h-60 w-auto">
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
+
+
+</body>
+</html>

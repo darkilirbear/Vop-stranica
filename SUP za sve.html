@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SUP za sve - VOP SUP Klub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .tab-active {
+      background-color: #f97316; /* narančasta */
+      color: white;
+    }
+    .tab-inactive {
+      background-color: #fed7aa; /* svijetlo narančasta */
+      color: #9a3412;
+    }
+	
+
+
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  
+  <style>
+.nav-link.active {
+  color: #f97316; /* narančasta */
+  text-decoration: underline wavy #f97316;
+  text-underline-offset: 4px;
+}
+</style>
+
+</head>
+<body class="font-sans text-gray-800">
+
+  
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
+    
+    <!-- Logo -->
+    <a href="index.html">
+      <img src="slike/logo/logo.jpg" alt="VOP Logo" class="h-12 w-auto">
+    </a>
+
+    <!-- Desktop navigacija -->
+    <nav class="hidden md:flex gap-6 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+    </nav>
+
+    <!-- Hamburger za mobitele -->
+    <button id="menu-toggle" class="md:hidden text-2xl focus:outline-none">
+      ☰
+    </button>
+
+    <!-- Društvene mreže (uvijek desno) -->
+    <div class="hidden md:flex items-center gap-4">
+      <a href="https://www.facebook.com/vopsupteam" target="_blank">
+        <img src="slike/media/fb.jpg" alt="Facebook" class="h-7 w-7 hover:opacity-80">
+      </a>
+      <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+        <img src="slike/media/ig.jpg" alt="Instagram" class="h-7 w-7 hover:opacity-80">
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+    <nav class="flex flex-col p-4 gap-4 text-sm font-medium">
+      <a href="index.html" class="nav-link">Početna stranica</a>
+      <a href="o nama.html" class="nav-link">O nama</a>
+      <a href="Kup kvarnera.html" class="nav-link">Kup Kvarnera</a>
+      <a href="SUP za sve.html" class="nav-link">SUP za sve</a>
+      <div class="flex gap-4 mt-2">
+        <a href="https://www.facebook.com/vopsupteam" target="_blank">
+          <img src="slike/media/fb.jpg" alt="Facebook" class="h-6 w-6 hover:opacity-80">
+        </a>
+        <a href="https://www.instagram.com/vop_sup_team" target="_blank">
+          <img src="slike/media/ig.jpg" alt="Instagram" class="h-6 w-6 hover:opacity-80">
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    document.getElementById("mobile-menu").classList.toggle("hidden");
+  });
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const links = Array.from(document.querySelectorAll('.nav-link'));
+  if (!links.length) return;
+
+  const base = document.baseURI || window.location.href; // radi i s file://
+  const currUrl = new URL(window.location.href, base);
+  const currPath = decodeURIComponent(currUrl.pathname || '').replace(/^\/+/, '').toLowerCase();
+  const currFile = currPath.split('/').pop() || '';
+
+  function normalizeName(s) {
+    return (s || '').toString()
+      .toLowerCase()
+      .replace(/%20/g, ' ')
+      .replace(/[-_]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  // 
+  links.forEach(l => l.classList.remove('active'));
+
+  let matched = false;
+
+  links.forEach(link => {
+    try {
+      const linkHref = link.getAttribute('href') || '';
+      const linkUrl = new URL(linkHref, base);
+      const linkPath = decodeURIComponent(linkUrl.pathname || '').replace(/^\/+/, '').toLowerCase();
+      const linkFile = linkPath.split('/').pop() || '';
+
+      // 
+      if (linkPath === currPath || linkFile === currFile) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+      // 
+      const indexNames = ['', 'index.html', 'index.htm', '/'];
+      if ((indexNames.includes(linkPath) && indexNames.includes(currPath)) ||
+          (indexNames.includes(linkFile) && indexNames.includes(currFile))) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+      // 
+      const linkNoExt = linkFile.replace(/\.[^/.]+$/, '');
+      const currNoExt = currFile.replace(/\.[^/.]+$/, '');
+      if (normalizeName(linkNoExt) === normalizeName(currNoExt)) {
+        link.classList.add('active');
+        matched = true;
+        return;
+      }
+
+    } catch (e) {
+      // 
+    }
+  });
+
+  // 
+  if (!matched) {
+    const currBaseName = normalizeName(currFile.replace(/\.[^/.]+$/, ''));
+    links.forEach(link => {
+      if (normalizeName(link.textContent || '') === currBaseName) {
+        link.classList.add('active');
+        matched = true;
+      }
+    });
+  }
+});
+</script>
+
+
+</header>
+  <!-- HERO -->
+  <section 
+  class="relative bg-cover bg-center text-white py-24 px-6 text-center"
+  style="background-image: url('slike/banner/supzasvebanner.jpg');"
+
+>
+  <!-- Tamni overlay da se tekst bolje vidi -->
+  <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+
+  <!-- Tekst iznad slike -->
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4"></h1>
+  </div>
+</section>
+
+  <!-- TABOVI -->
+  <section class="py-8 px-6 max-w-5xl mx-auto text-center">
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+      <button class="tab-btn tab-active px-6 py-3 rounded-lg font-semibold" data-tab="skolica">SUPer Školica</button>
+      <button class="tab-btn tab-inactive px-6 py-3 rounded-lg font-semibold" data-tab="experience">SUP Experience</button>
+      <button class="tab-btn tab-inactive px-6 py-3 rounded-lg font-semibold" data-tab="fitness">SUPer Fitness</button>
+      <button class="tab-btn tab-inactive px-6 py-3 rounded-lg font-semibold" data-tab="night">SUPer Night</button>
+    </div>
+
+    <!-- SADRŽAJ -->
+    <div id="tabContent" class="text-left space-y-4 text-lg leading-relaxed"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <!-- KONTAKT -->
+   <footer class="py-10 px-6 text-sm" style="background-color: #41479d; color: white;">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <!-- Lijeva strana - tekst -->
+    <div>
+      <h2 class="text-xl font-bold mb-4">Kontakt</h2>
+      <p>SPORTSKO REKREACIJSKI KLUB "SUP TEAM VOLOSKO-OPATIJA-PRELUK"</p>
+      <p>Email: <a href="mailto:vopsupteam@gmail.com" class="underline">vopsupteam@gmail.com</a></p>
+      <p>Tel: 0959025061</p>
+      <p>Adresa: Put uz dol 7, 51410 Opatija</p>
+      <p>OIB: 98170007481</p>
+      <p>IBAN: HR4024020061101026326 (Erste&Steiermärkische Bank)</p>
+    </div>
+
+    <!-- Desna strana - logo -->
+    <div>
+      <img src="slike/logo/logo2.jpg" alt="VOP Logo" class="h-60 w-auto">
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
+  <script>
+  
+  
+
+
+<!-- GALERIJA (slider) + LOGO STAVLJAMO UNUTAR tabContent -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script>
+  const tabData = {
+    skolica: `
+      <h2 class="text-2xl font-bold"></h2>
+      <p></p>
+       <div class="prose lg:prose-lg max-w-3xl mx-auto text-gray-800">
+    <h2 class="text-3xl font-bold text-blue-900 mb-4">SUPer Školica</h2>
+    <p class="mb-4">
+      Projekt Mala škola SUPanja – SUPer Školica zaživio je 2023. godine, kada su četiri člana 
+      SUP Teama VOP položila ispite za trenere sportske rekreacije i odlučila znanje prenijeti na najmlađe. 
+    </p>
+
+    <p class="mb-4">
+      Iako je SUP novitet u školskom sportu, interes djece premašio je sva očekivanja - pogotovo jer u ljetnim mjesecima većina sportskih aktivnosti 
+	  miruje, a more i daske pozivaju na igru i istraživanje.
+    </p>
+
+    <p class="mb-4">
+     U ljeto 2024., u suradnji s OŠ Rikard Katalinić Jeretov Opatija i profesoricom Petrom Filipović, škola SUPanja ušla je i u školski program “Školski sportski 
+	 praznici”. Tijekom četiri tjedna, stotine učenika prvi su put stali na SUP, upoznali opremu, pravila sigurnosti, i isprobali svoje prve zaveslaje – 
+	 uz stručno vodstvo i puno smijeha. Neki su prvi put uopće čuli za ovaj sport, a na kraju ljeta već su ponosno stajali na postolju s medaljama oko vrata.
+    </p>
+
+    <p class="mb-4">
+     Treninzi su se nastavili i nakon školskih prezentacija – u popodnevnim satima, dva puta tjedno, u opuštenoj, ali organiziranoj atmosferi. 
+	 Škola je djeci besplatna, a plaća se isključivo članarina klubu. Pristupačnost i inkluzivnost ključni su za naš pristup – 
+	 vjerujemo da svako dijete zaslužuje priliku naučiti veslati, bez obzira na predznanje, iskustvo ili opremu. 
+    </p>
+	
+	<p class="mb-4">
+	S rastom interesa, raste i naša vizija. U 2025. godini širimo suradnju s osnovnim školama diljem Opatijske rivijere,
+	s ciljem da SUP postane dio svakodnevne dječje igre, učenja i sportskog razvoja. Jer nije važno samo stajati na dasci 
+	- važno je što sve s nje možeš vidjeti, naučiti i postati.
+	</p>
+
+
+    <h2 class="text-2xl font-bold text-blue-600 mt-8 mb-4">Uključi se u SUPer Školicu</h2>
+    <p class="mb-4">
+      Zanima te škola SUPanja? Super! Sve što ti treba je osnovna razina plivanja, dobra volja i osmijeh. 
+      Oprema te čeka kod nas, a naši treneri će te sigurno i zabavno uvesti u svijet veslanja na dasci.
+    </p>
+
+    <p class="mb-4">
+      Škola je namijenjena djeci školskog uzrasta i održava se tijekom ljetnih mjeseci, dva puta tjedno, 
+      u popodnevnim satima. Treninzi su prilagođeni početnicima, a prvi sat je probni i besplatan.
+    </p>
+
+    <div class="bg-blue-100 p-4 rounded-lg mt-6">
+      <p class="font-semibold">Za prijave i više informacija:</p>
+      <p>Email: <a href="mailto:supskola@vop.fun" class="text-blue-700 underline">supskola@vop.fun</a></p>
+      <p>Tel: <span class="font-bold">091 111 2223</span></p>
+	  
+	  
+    </div>
+	<p class="mb-4">
+      Vidimo se na vodi - budi SUPer s nama!
+    </p>
+  </div>
+
+
+
+
+
+
+      <!-- GALERIJA -->
+      <div class="swiper mySwiper mt-6 rounded-lg shadow-lg max-w-2xl mx-auto">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide p-2"><img src="slike/skolica/skolica1.jpg" class="w-full rounded-lg" alt="Skolica 1"></div>
+          <div class="swiper-slide p-2"><img src="slike/skolica/skolica9.jpg" class="w-full rounded-lg" alt="Skolica 9"></div>
+		  <div class="swiper-slide p-2"><img src="slike/skolica/skolica3.jpg" class="w-full rounded-lg" alt="Skolica 3"></div>
+		  <div class="swiper-slide p-2"><img src="slike/skolica/skolica4.jpg" class="w-full rounded-lg" alt="Skolica 4"></div>
+		  <div class="swiper-slide p-2"><img src="slike/skolica/skolica6.jpg" class="w-full rounded-lg" alt="Skolica 6"></div>
+		  <div class="swiper-slide p-2"><img src="slike/skolica/skolica5.jpg" class="w-full rounded-lg" alt="Skolica 5"></div>
+		  <div class="swiper-slide p-2"><img src="slike/skolica/skolica7.jpg" class="w-full rounded-lg" alt="Skolica 7"></div>
+		  <div class="swiper-slide p-2"><img src="slike/skolica/skolica8.jpg" class="w-full rounded-lg" alt="Skolica 8"></div>
+        </div>
+        <div class="swiper-button-next text-orange-500"></div>
+        <div class="swiper-button-prev text-orange-500"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- LOGO sup za sve -->
+      <div class="text-center mt-8">
+        <img src="slike/logo/logo3.jpg" alt="VOP Logo" class="h-40 mx-auto">
+      </div>
+    `,
+
+    experience: `
+     
+  <div class="prose lg:prose-lg max-w-3xl mx-auto text-gray-800">
+    <h2 class="text-3xl font-bold text-blue-900 mb-4">SUP Experience</h2>
+    <p class="mb-4">
+      Ljeto u Opatiji ponovno donosi dašak svježine – na dasci! Projekt Opatija – oaza zdravlja i wellnessa, 
+	  u suradnji s SUP Teamom VOP, i ove godine organizira SUP Experience – besplatni program uspravnog veslanja na dasci
+	  , namijenjen odraslima i starijim rekreativcima koji žele aktivno, ali nježno uživati u moru i pokretu.
+    </p>
+
+    <p class="mb-4">
+      Program je zamišljen kao iskustveni tečaj za početnike: polaznici se upoznaju s osnovnom 
+	  opremom, pravilima sigurnosti i tehnikom veslanja, a sve uz stručno vodstvo trenera i članova 
+	  kluba koji su specijalizirani za rad s rekreativnim skupinama. Nakon kratkog uvoda na kopnu, 
+	  kreće lagana vođena tura – od Voloskog do Opatije i natrag – savršena prilika za stjecanje samopouzdanja na dasci, uživanje u krajoliku i tišini mora.
+    </p>
+	
+	<p class="mb-4">
+	SUP Experience nije natjecanje, već nježan korak prema aktivnijem ljetu. 
+	Idealan je za sve koji traže ravnotežu, pokret, druženje i prirodu – bez pritiska 
+	i u svom tempu. Program je posebno prilagođen osobama zrelije dobi (50+), ali otvoren 
+	je i svima drugima koji žele prvi put stati na SUP dasku i otkriti čari ovog sve popularnijeg sporta.
+	</p>
+	
+
+    <h2 class="text-2xl font-bold text-blue-600 mt-8 mb-4">Uključi se u SUP Experience</h2>
+    <p class="mb-4">
+      Sudjelovanje je besplatno, uz obveznu prijavu putem Turističkog informativnog centra TZ Opatija na broj +385 51 271 310 
+	  ili e-poštom na tic@visitopatija.com. Sve što trebate ponijeti je kupaći kostim, bocu vode, kremu za sunčanje i dobru volju. 
+	  Program se održava u malim grupama, u sljedećim terminima: 
+21. lipnja, 5. i 19. srpnja (u 9 sati),1. kolovoza (od 18 do 20 sati).
+
+    </p>
+	
+	<p class="mb-4">
+	Sudjelovanje je besplatno, uz obveznu prijavu putem Turističkog informativnog centra TZ Opatija na broj +385 51 271 310 ili e-poštom 
+	na tic@visitopatija.com. Sve što trebate ponijeti je kupaći kostim, bocu vode, kremu za sunčanje i dobru volju. Program se održava u 
+	malim grupama, u sljedećim terminima: 
+21. lipnja, 5. i 19. srpnja (u 9 sati),1. kolovoza (od 18 do 20 sati).
+</p>
+
+<div class="bg-blue-100 p-4 rounded-lg mt-6">
+      <p class="font-semibold">Za prijave i više informacija:</p>
+      <p>Email: <a href="mailto:supexperience@vop.fun" class="text-blue-700 underline">supexperience@vop.fun</a></p>
+      <p>Tel: <span class="font-bold">091 111 2223</span></p>
+	  
+	  
+    </div>
+	
+<p class="mb-4">
+Vidimo se na vodi - budi SUPer s nama!
+</p>
+  </div>
+
+      <!-- GALERIJA -->
+      <div class="swiper mySwiper mt-6 rounded-lg shadow-lg max-w-2xl mx-auto">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="slike/xp/xp1.jpg" class="w-full rounded-lg" alt="SUP 1"></div>
+          <div class="swiper-slide"><img src="slike/xp/xp2.jpg" class="w-full rounded-lg" alt="SUP 2"></div>
+          <div class="swiper-slide"><img src="slike/xp/xp3.jpg" class="w-full rounded-lg" alt="SUP 3"></div>
+		  <div class="swiper-slide"><img src="slike/xp/xp4.jpg" class="w-full rounded-lg" alt="SUP 4"></div>
+		  <div class="swiper-slide"><img src="slike/xp/xp5.jpg" class="w-full rounded-lg" alt="SUP 5"></div>
+		  <div class="swiper-slide"><img src="slike/xp/xp6.jpg" class="w-full rounded-lg" alt="SUP 6"></div>
+        </div>
+        <div class="swiper-button-next text-orange-500"></div>
+        <div class="swiper-button-prev text-orange-500"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- LOGO -->
+      <div class="text-center mt-8">
+        <img src="slike/logo/logo3.jpg" alt="VOP Logo" class="h-40 mx-auto">
+      </div>
+    `,
+
+    fitness: `
+	<section id="fitness">
+     <div class="prose lg:prose-lg max-w-3xl mx-auto text-gray-800">
+    <h2 class="text-3xl font-bold text-blue-900 mb-4">SUPer Fitness</h2>
+    <p class="mb-4">
+      Volosko – More, zalazak sunca i SUPer Fitness. Tako izgledaju večeri u Voloskom zahvaljujući inovativnom programu funkcionalnog
+	  treninga na SUP daskama koji osvaja srca svih koji žele rekreaciju u prirodnom okruženju mora.
+    </p>
+
+    <p class="mb-4">
+      Ovaj atraktivni program postao je pravi hit među rekreativcima koji traže ravnotežu između jačanja tijela i 
+	  smirenja uma, sve dok se priroda polako priprema za večernji odmor.
+SUPer Fitness je jedinstvena kombinacija vježbi za snagu, ravnotežu, mobilnost i stabilnost – sve na SUP daskama. 
+Trenerka se pozicionira u sredini, a sudionici se raspoređuju oko nje u krug. Tako se stvara izazovna nestabilna podloga koja aktivira 
+cijelo tijelo, uključujući core mišiće koje standardni treninzi često zanemaruju.
+    </p>
+	
+	<p class="mb-4">
+	Upravo ta nestabilnost čini SUPer Fitness posebnim – svaki pokret postaje svjestan, a svaka vježba izazov za tijelo i um. 
+	Program je osmišljen tako da bude dostupan svima, bez obzira na dob ili fizičku spremu.
+	</p>
+	
+	<p class="mb-4">
+	Svatko može sudjelovati u SUPer Fitness programu. Pristup je uvijek individualiziran – svatko vježba u svom ritmu,
+	bez pritiska, ali s podrškom grupe i instruktora. Za početnike postoje jednostavnije varijante vježbi, dok napredni 
+	mogu raziskati punu kontrolu tijela na dasci. Cilj je da svatko napreduje vlastitim tempom.
+	</p>
+	
+	<p class="mb-4">
+	Osim što je učinkovit, SUPer Fitness ima i svoju posebnu čaroliju – 
+	kombinaciju fizičkog izazova i mentalnog opuštanja u prirodnom okruženju mora. 
+	Suncem obasjana površina mora, zvuk valova i osjećaj slobode dodatno motiviraju i smiruju.
+	</p>
+
+    <h2 class="text-2xl font-bold text-blue-600 mt-8 mb-4">Uključi se u SUP Fitness</h2>
+    <p class="mb-4">
+      Treninzi se održavaju u malim grupama, najčešće ujutro ili predvečer, kada je more najmirnije, a svjetlo najnježnije. 
+	  SUP dasku ne morate posjedovati – sve što trebate je volja za kretanjem i osnovne vještine plivanja.
+
+    </p>
+	
+	
+	<p class="mb-4">
+	SUPer Fitness nije natjecanje, već poziv tijelu da se pokrene, a umu da se smiri. Ako tražite 
+	razlog da provedete vrijeme aktivnije – more i pokret možda su idealan spoj za vas.
+</p>
+
+<div class="bg-blue-100 p-4 rounded-lg mt-6">
+      <p class="font-semibold">Za prijave i više informacija:</p>
+      <p>Email: <a href="mailto:superfitness@vop.fun" class="text-blue-700 underline">superfitness@vop.fun</a></p>
+      <p>Tel: <span class="font-bold">091 111 2223</span></p>
+	  
+	  
+    </div>
+	
+<p class="mb-4">
+Vidimo se na vodi - budi SUPer s nama!
+</p>
+  </div>
+	  
+	 
+	  
+	  
+	  <!--galerija -->
+	  <div class="swiper mySwiper mt-6 rounded-lg shadow-lg max-w-2xl mx-auto">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide p-2"><img src="slike/fitnes/f1.jpg" class="w-full rounded-lg" alt="f1"></div>
+          <div class="swiper-slide p-2"><img src="slike/fitnes/f2.jpg" class="w-full rounded-lg" alt="f2"></div>
+		  <div class="swiper-slide p-2"><img src="slike/fitnes/f3.jpg" class="w-full rounded-lg" alt="f3"></div>
+		  <div class="swiper-slide p-2"><img src="slike/fitnes/f4.jpg" class="w-full rounded-lg" alt="f4"></div>
+		  <div class="swiper-slide p-2"><img src="slike/fitnes/f5.jpg" class="w-full rounded-lg" alt="f5"></div>
+		  <div class="swiper-slide p-2"><img src="slike/fitnes/f6.jpg" class="w-full rounded-lg" alt="f6"></div>
+		  <div class="swiper-slide p-2"><img src="slike/fitnes/f7.jpg" class="w-full rounded-lg" alt="f7"></div>
+		  
+        </div>
+        <div class="swiper-button-next text-orange-500"></div>
+        <div class="swiper-button-prev text-orange-500"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+	  
+	  
+	  <!-- LOGO -->
+	  <div class="text-center mt-8">
+        <img src="slike/logo/logo3.jpg" alt="VOP Logo" class="h-40 mx-auto">
+      </div>
+    `,
+
+    night: `
+	<section id="super-night">
+      <div class="prose lg:prose-lg max-w-3xl mx-auto text-gray-800">
+    <h2 class="text-3xl font-bold text-blue-900 mb-4">SUPer Night</h2>
+    <p class="mb-4">
+      SUPer Night je večernja tura za sve koji žele doživjeti more na potpuno nov način – 
+	  tišinu, mir i svjetlosni spektakl ispod sebe. Naše Glow daske svijetle u mraku i stvaraju magičan ugođaj dok lagano 
+	  klizimo duž obale – pod zvijezdama, kroz svjetlosne odraze, i u potpunom skladu s noćnim morem.
+    </p>
+
+    <p class="mb-4">
+      Ture su vođene, sigurne i prilagođene početnicima i rekreativcima. Tempo je lagan, a atmosfera posebna – prava mala avantura u 
+	  ljetnoj noći. Polazak je u suton, a povratak uz šum valova i pogled na obasjanu obalu Voloskog i Opatije.
+    </p>
+	
+	<p class="mb-4">
+	Za sudjelovanje nije potrebno prethodno iskustvo – samo osnovna razina plivanja i spremnost na novu perspektivu. 
+	Oprema, svjetla i sigurnost su naša briga – tvoje je samo da dođeš, otpustiš dan i uroniš u noćni svijet SUPanja.
+	</p>
+
+    <h2 class="text-2xl font-bold text-blue-600 mt-8 mb-4">Uključi se u SUP Night</h2>
+    <p class="mb-4">
+      SUPer Night ture namijenjene su svima koji žele doživjeti rekreaciju u noćnoj tišini – daleko od vreve, a blizu sebi. 
+	  Idealno za parove, prijatelje ili solo avanturiste koji traže drugačiji doživljaj ljeta.
+    </p>
+	
+	<p class="mb-4">
+	Sudjelovanje je jednostavno – dovoljno je znati plivati i ponijeti kupaći kostim. Sve ostalo – Glow daska, veslo, svjetla i vodstvo – osigurava VOP tim.
+	</p>
+	
+	<p class="mb-4">
+	Grupe su male, tura opuštena, a kraj večeri često se produži u spontano druženje uz obalu ili piće pod zvjezdanim nebom. 
+	Jer kad jednom probaš – vraćaš se po još.
+	</p>
+	
+	<div class="bg-blue-100 p-4 rounded-lg mt-6">
+      <p class="font-semibold">Za prijave i više informacija:</p>
+      <p>Email: <a href="mailto:supernight@vop.fun" class="text-blue-700 underline">supernight@vop.fun</a></p>
+      <p>Tel: <span class="font-bold">091 111 2223</span></p>
+	  
+	  
+    </div>
+	<p class="mb-4">
+	Vidimo se na vodi - budi SUPer s nama!
+	</p>
+	
+	
+  </div>
+	  
+	   <!--galerija -->
+	  <div class="swiper mySwiper mt-6 rounded-lg shadow-lg max-w-2xl mx-auto">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide p-2"><img src="slike/night/n1.jpg" class="w-full rounded-lg" alt="n1"></div>
+          <div class="swiper-slide p-2"><img src="slike/night/n2.jpg" class="w-full rounded-lg" alt="n2"></div>
+		  <div class="swiper-slide p-2"><img src="slike/night/n3.jpg" class="w-full rounded-lg" alt="n3"></div>
+		  <div class="swiper-slide p-2"><img src="slike/night/n4.jpg" class="w-full rounded-lg" alt="n4"></div>
+		  <div class="swiper-slide p-2"><img src="slike/night/n5.jpg" class="w-full rounded-lg" alt="n5"></div>
+		  <div class="swiper-slide p-2"><img src="slike/night/n6.jpg" class="w-full rounded-lg" alt="n6"></div>
+		
+        </div>
+        <div class="swiper-button-next text-orange-500"></div>
+        <div class="swiper-button-prev text-orange-500"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+	  
+	  <!-- LOGO -->
+	  <div class="text-center mt-8">
+        <img src="slike/logo/logo3.jpg" alt="VOP Logo" class="h-40 mx-auto">
+      </div>
+    `
+  };
+
+  function renderTab(tabKey) {
+    document.getElementById("tabContent").innerHTML = tabData[tabKey];
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.classList.remove("tab-active");
+      btn.classList.add("tab-inactive");
+    });
+    const activeBtn = document.querySelector(`[data-tab="${tabKey}"]`);
+    activeBtn.classList.remove("tab-inactive");
+    activeBtn.classList.add("tab-active");
+
+    // Inicijalizacija Swipera nakon što se promijeni tab
+    new Swiper(".mySwiper", {
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  }
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      renderTab(btn.dataset.tab);
+    });
+  });
+
+  // Prikaz prvog taba na početku
+  renderTab("skolica");
+</script>
+
+<script>
+  const gallerySwiper = new Swiper(".myGallery", {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      640: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 },
+    },
+  });
+  // 
+if (window.location.hash === "#super-night") {
+  renderTab("night");
+}
+
+ // 
+if (window.location.hash === "#fitness") {
+  renderTab("fitness");
+}
+
+
+</script>
+
+
+  </script>
+  
+  
+ 
+
+</body>
+</html>
