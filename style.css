@@ -233,6 +233,29 @@ section a.text-blue-600:hover {
 }
 
 
+/* ===== FOOTER LOGO RESPONSIVE FIX ===== */
+footer img {
+  width: auto;
+  height: auto;
+  max-width: 200px;       /* maksimalna širina loga */
+  max-height: 200px;      /* maksimalna visina loga */
+  object-fit: contain;    /* očuva proporcije loga */
+}
+
+/* Na manjim ekranima smanji logo */
+@media (max-width: 768px) {
+  footer img {
+    max-width: 120px;
+    max-height: 120px;
+    margin: 0 auto;
+    display: block;        /* centriraj na mobitelima */
+  }
+
+  footer .flex {
+    flex-direction: column;  /* poravnaj sadržaj u stupac */
+    text-align: center;
+  }
+}
 
 
 
