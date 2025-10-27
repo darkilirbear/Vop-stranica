@@ -237,16 +237,16 @@ section a.text-blue-600:hover {
 footer img {
   width: auto;
   height: auto;
-  max-width: 200px;       /* maksimalna širina loga */
-  max-height: 200px;      /* maksimalna visina loga */
+  max-width: 400px;       /* maksimalna širina loga */
+  max-height: 400px;      /* maksimalna visina loga */
   object-fit: contain;    /* očuva proporcije loga */
 }
 
 /* Na manjim ekranima smanji logo */
 @media (max-width: 768px) {
   footer img {
-    max-width: 120px;
-    max-height: 120px;
+    max-width: 220px;
+    max-height: 220px;
     margin: 0 auto;
     display: block;        /* centriraj na mobitelima */
   }
@@ -256,6 +256,7 @@ footer img {
     text-align: center;
   }
 }
+
 
 
 
