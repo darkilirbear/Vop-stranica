@@ -172,27 +172,33 @@ section a.text-blue-600:hover {
 
 
 
-/* ===== FOOTER LOGO RESPONSIVE FIX ===== */
+/* ===== FOOTER LOGO FIX ===== */
 footer img {
   width: auto;
   height: auto;
-  max-width: 200px;       /* maksimalna širina loga */
-  max-height: 200px;      /* maksimalna visina loga */
-  object-fit: contain;    /* očuva proporcije loga */
+  max-width: 220px;      /* normalna veličina na desktopu */
+  max-height: 220px;
+  object-fit: contain;   /* očuva proporcije slike */
+  position: relative;
+  right: 0;
+  bottom: 0;
 }
 
-/* Na manjim ekranima smanji logo */
+/* Mobilna prilagodba */
 @media (max-width: 768px) {
   footer img {
-    max-width: 120px;
-    max-height: 120px;
-    margin: 0 auto;
-    display: block;        /* centriraj na mobitelima */
+    max-width: 140px;     /* smanji logo */
+    max-height: 140px;
+    object-fit: contain;
+    position: absolute;   /* zadrži ga u kutu */
+    right: 10px;          /* udaljenost od desnog ruba */
+    bottom: 10px;         /* udaljenost od dna */
   }
 
-  footer .flex {
-    flex-direction: column;  /* poravnaj sadržaj u stupac */
-    text-align: center;
+  footer {
+    position: relative;   /* omogućuje apsolutno pozicioniranje slike unutar footera */
   }
 }
+
+
 
