@@ -259,7 +259,7 @@ footer img {
 
 
 
-/* ===== FOOTER LOGO RESPONSIVE FIX (isti izgled kao index) ===== */
+/* ===== FOOTER LOGO RESPONSIVE FIX (isti na svim stranicama) ===== */
 .footer-logo img {
   width: auto;
   height: auto;
@@ -268,20 +268,22 @@ footer img {
   object-fit: contain;
 }
 
-/* Na manjim ekranima */
+/* Na manjim ekranima (mobiteli) */
 @media (max-width: 768px) {
   footer .flex {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem; /* malo razmaka između teksta i loga */
+    flex-direction: column; /* prebacuje u stupac */
+    text-align: center;     /* centriraj tekst */
+    gap: 1.5rem;            /* dodaj razmak između teksta i loga */
   }
 
   .footer-logo img {
     max-width: 220px;
     max-height: 220px;
     margin: 0 auto;
-    display: block;
+    display: block;         /* centriraj sliku */
   }
 }
+
+
 
 
