@@ -259,4 +259,29 @@ footer img {
 
 
 
+/* ===== FOOTER LOGO RESPONSIVE FIX (isti izgled kao index) ===== */
+.footer-logo img {
+  width: auto;
+  height: auto;
+  max-width: 400px;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+/* Na manjim ekranima */
+@media (max-width: 768px) {
+  footer .flex {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem; /* malo razmaka između teksta i loga */
+  }
+
+  .footer-logo img {
+    max-width: 220px;
+    max-height: 220px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
 
