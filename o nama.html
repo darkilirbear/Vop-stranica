@@ -155,20 +155,56 @@ document.addEventListener('DOMContentLoaded', () => {
 </header>
 
 <!-- HERO -->
-  <section 
-  class="relative bg-cover bg-center text-white py-24 px-6 text-center"
-  style="background-image: url('slike/banner/onamabanner.jpg');"
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,900&display=swap" rel="stylesheet">
 
+<style>
+  .hero-text {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900; /* Black */
+    font-style: italic;
+    font-size: 50px;
+    color: #FFFFFF;
+    line-height: 1.1;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+  }
+
+  /* Desktop – tekst u lijevom centru slike */
+  @media (min-width: 768px) {
+    .hero-content {
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+      padding-left: 6rem; /* razmak od lijevog ruba */
+    }
+  }
+
+  /* Mobilni uređaji – tekst centriran */
+  @media (max-width: 767px) {
+    .hero-content {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero-text {
+      font-size: 40px;
+    }
+  }
+</style>
+
+<section 
+  class="relative bg-cover bg-center text-white py-24 px-6"
+  style="background-image: url('slike/banner/onamabanner.jpg');"
 >
   <!-- Tamni overlay -->
   <div class="absolute inset-0 bg-black bg-opacity-40"></div>
 
-  <!-- Tekst iznad slike -->
-  <div class="relative z-10">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4"></h1>
+  <!-- Tekst -->
+  <div class="absolute inset-0 flex hero-content relative z-10">
+    <h1 class="hero-text">O nama</h1>
   </div>
 </section>
-
 
 <!-- TEKST + GALERIJA -->
 <section class="bg-white py-12 px-6 max-w-6xl mx-auto">
@@ -405,4 +441,5 @@ Poseban naglasak stavljamo na sigurnost na vodi, očuvanje okoliša i uključivo
 </body>
 
 </html>
+
 
