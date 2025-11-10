@@ -352,14 +352,16 @@ document.addEventListener('DOMContentLoaded', () => {
   </section>
 
  
-  <!-- NOVOSTI -->
+ <!-- NOVOSTI -->
   
   <body class="font-sans text-gray-900">
   
   
 
-<section class="bg-gray-50 py-16 px-6">
-  <h2 class="text-3xl font-semibold text-center mb-10">Novosti</h2>
+<section class="py-16 px-6 max-w-5xl mx-auto text-center">
+  <h3 style="font-family: 'Exo 2', sans-serif; font-weight: 800; font-style: italic; font-size: 40px; line-height: 1.2; color: #41479C;">
+    Novosti
+  </h3>
 
   <div class="swiper newsSwiper max-w-6xl mx-auto">
     <div class="swiper-wrapper">
@@ -368,7 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
         <img src="slike\Novostislike/aktivnosti.jpg" alt="Regate 2025" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Regate i aktivnosti 2025</h3>
+           <h4 style="font-family: 'Exo 2', sans-serif; font-weight: 700; font-style: italic; font-size: 24px; color: #41479C; line-height: 1.3; margin-bottom: 10px;">
+            Regate i aktivnosti 2025
+          </h4>
            <p style="color:black;" class="mb-4">
   Nova sezona, nova uzbuđenja! Donosimo raspored regata i događanja u 2025. - zaveslaj s nama!
 </p>
@@ -381,7 +385,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
         <img src="slike\Novostislike/kucica.jpg" alt="Klupska kućica" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">VOP ima klupsku kućicu!</h3>
+          <h4 style="font-family: 'Exo 2', sans-serif; font-weight: 700; font-style: italic; font-size: 24px; color: #41479C; line-height: 1.3; margin-bottom: 10px;">
+            VOP ima klupsku kućicu!
+          </h4>
           <p style="color:black;" class="mb-4">SUP klub VOP konačno ima klupsku kućicu! Prostor za opremu, druženje i još više veslanja.</p>
           <a href="vop-klubska-kucica.html" class="text-blue-600 hover:underline">Saznaj više</a>
         </div>
@@ -393,7 +399,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
         <img src="slike\Novostislike/iskustvo.jpg" alt="SUP iskustvo za sve generacije" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">SUP iskustvo za sve generacije</h3>
+          <h4 style="font-family: 'Exo 2', sans-serif; font-weight: 700; font-style: italic; font-size: 24px; color: #41479C; line-height: 1.3; margin-bottom: 10px;">
+            SUP iskustvo za sve generacije
+          </h4>
           <p style="color:black;" class="mb-4">Lagane ture, toplo more i još toplije društvo - naši seniori veslaju za zdravlje i osmijeh!</p>
           <a href="SUP za sve.html" class="text-blue-600 hover:underline">Saznaj više</a>
         </div>
@@ -403,7 +411,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="swiper-slide bg-white shadow rounded-lg overflow-hidden">
         <img src="slike\Novostislike/kup2024.jpg" alt="Klupska kućica" class="w-full h-48 object-cover">
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Pobjednici Kupa Kvarnera 2024</h3>
+           <h4 style="font-family: 'Exo 2', sans-serif; font-weight: 700; font-style: italic; font-size: 24px; color: #41479C; line-height: 1.3; margin-bottom: 10px;">
+            Pobjednici Kupa Kvarnera 2024
+          </h4>
           <p style="color:black;" class="mb-4">Adrenalin, zaveslaji i medalje - pogledaj kako je VOP osvojio Kvarner i srca publike!</p>
           <a href="Kup kvarnera.html" class="text-blue-600 hover:underline">Saznaj više</a>
         </div>
@@ -414,8 +424,16 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 
     <!-- Navigacija -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+	<style>
+/* Spušta pagination (točkice) malo niže */
+.newsSwiper .swiper-pagination {
+  bottom: -5px !important;  /* možeš povećati broj ako želiš još niže, npr. -25px */
+  position: relative !important;
+  margin-top: 10px;
+}
+</style>
+
+    
     <div class="swiper-pagination"></div>
   </div>
 </section>
@@ -634,6 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
 
