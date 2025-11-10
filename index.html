@@ -160,6 +160,45 @@ document.addEventListener('DOMContentLoaded', () => {
 <body class="font-sans text-white-800">
 
  <!-- HERO SLIDER -->
+  
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,900&display=swap" rel="stylesheet">
+
+<style>
+  /* Stil hero teksta */
+  .hero-text {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900; /* Black */
+    font-style: italic;
+    font-size: 70px;
+    color: #FFFFFF;
+    line-height: 1.1;
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+  }
+
+  /* Layout desktop */
+  @media (min-width: 768px) {
+    .swiper-slide > div {
+      justify-content: center;
+      align-items: flex-start; /* lijevi centar */
+      text-align: left;
+    }
+  }
+
+  /* Layout mobitel */
+  @media (max-width: 767px) {
+    .swiper-slide > div {
+      justify-content: center;
+      align-items: center; /* centar na mobitelu */
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .hero-text {
+      font-size: 40px; /* smanjen font na manjim ekranima */
+    }
+  }
+</style>
+
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -169,33 +208,44 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="swiper-wrapper">
 
     <!-- Slide 1 -->
-    <div class="swiper-slide relative">
-      <img src="slike\pocetnaslides/slide1.jpg" alt="Slide 1" class="w-full h-full object-cover absolute inset-0 z-0">
-      <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-          
-        </h1>
-        <!-- Novi button kao slika u donjem desnom kutu -->
-<a href="Kup kvarnera.html" 
-   class="absolute bottom-8 right-8 z-20">
-  <img src="slike/pocetnaslides/button1.png" 
-       alt="VOP Regata" 
-       class="w-36 md:w-48 object-contain hover:scale-105 hover:opacity-90 transition-all duration-300"
->
-</a>
+<div class="swiper-slide relative">
+  <img src="slike/pocetnaslides/slide1.jpg" alt="Slide 1"
+       class="w-full h-full object-cover absolute inset-0 z-0">
 
-      </div>
-    </div>
+  <!-- Tekst preko slike -->
+  <div class="absolute inset-0 flex flex-col justify-center items-start text-left z-10 px-10 md:px-20">
+    <h1 class="hero-text">
+      Tvoj fokus.<br>
+      Tvoj tempo.<br>
+      Tvoj VOP.
+    </h1>
+  </div>
+
+  <!-- Gumb kao slika u donjem desnom kutu -->
+  <a href="Kup kvarnera.html"
+     class="absolute bottom-8 right-8 z-20">
+    <img src="slike/pocetnaslides/button1.png"
+         alt="VOP Regata"
+         class="w-36 md:w-48 object-contain hover:scale-105 hover:opacity-90 transition-all duration-300">
+  </a>
+</div>
 
 
    
 <!-- Slide 2 -->
-    <div class="swiper-slide relative">
-      <img src="slike\pocetnaslides/slide2.jpg" alt="Slide 2" class="w-full h-full object-cover absolute inset-0 z-0">
-      <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
+<div class="swiper-slide relative">
+  <img src="slike/pocetnaslides/slide2.jpg" alt="Slide 2"
+       class="w-full h-full object-cover absolute inset-0 z-0">
           
-        </h1>
+        <!-- Tekst preko slike -->
+  <div class="absolute inset-0 flex flex-col justify-center items-start text-left z-10 px-10 md:px-20">
+    <h1 class="hero-text">
+      Tvoja djeca.<br>
+      Njihova pustolovina.<br>
+      Tvoj VOP.
+    </h1>
+  </div>
+  
         <!-- Novi button kao slika u donjem desnom kutu -->
 <a href="SUP za sve.html"
    class="absolute bottom-8 right-8 z-20">
@@ -206,16 +256,23 @@ document.addEventListener('DOMContentLoaded', () => {
 </a>
 
       </div>
-    </div>
+    
 
 
 <!-- Slide 3 -->
 <div class="swiper-slide relative">
-      <img src="slike\pocetnaslides/slide3.jpg" alt="Slide 2" class="w-full h-full object-cover absolute inset-0 z-0">
-      <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
+  <img src="slike/pocetnaslides/slide3.jpg" alt="Slide 3"
+       class="w-full h-full object-cover absolute inset-0 z-0">
           
-        </h1>
+        <!-- Tekst preko slike -->
+  <div class="absolute inset-0 flex flex-col justify-center items-start text-left z-10 px-10 md:px-20">
+    <h1 class="hero-text">
+      Tvoje zvijezde.<br>
+      Tvoj put.<br>
+      Tvoj VOP.
+    </h1>
+  </div>
+  
         <!-- Novi button kao slika u donjem desnom kutu -->
 <a href="SUP za sve.html#super-night" 
    class="absolute bottom-8 right-8 z-20">
@@ -225,15 +282,21 @@ document.addEventListener('DOMContentLoaded', () => {
 >
 </a>
       </div>
-    </div>
+    
 
 <!-- Slide 4 -->
 <div class="swiper-slide relative">
-      <img src="slike\pocetnaslides/slide4.jpg" alt="Slide 2" class="w-full h-full object-cover absolute inset-0 z-0">
-      <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-        <h1 class="text-5xl md:text-6xl font-bold leading-tight drop-shadow-lg">
+  <img src="slike/pocetnaslides/slide4.jpg" alt="Slide 4"
+       class="w-full h-full object-cover absolute inset-0 z-0">
          
-        </h1>
+          <!-- Tekst preko slike -->
+  <div class="absolute inset-0 flex flex-col justify-center items-start text-left z-10 px-10 md:px-20">
+    <h1 class="hero-text">
+      Tvoj pokret.<br>
+      Tvoja snaga.<br>
+      Tvoj VOP.
+    </h1>
+  </div>
         <!-- Novi button kao slika u donjem desnom kutu -->
 <a href="SUP za sve.html#fitness" 
    class="absolute bottom-8 right-8 z-20">
@@ -242,6 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
       class="w-36 md:w-48 object-contain hover:scale-105 hover:opacity-90 transition-all duration-300"
 >
 </a>
+
+
 
       </div>
     </div>
@@ -557,6 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
 
