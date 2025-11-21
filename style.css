@@ -233,56 +233,7 @@ section a.text-blue-600:hover {
 }
 
 
-/* ===== FOOTER LOGO RESPONSIVE FIX ===== */
-footer img {
-  width: auto;
-  height: auto;
-  max-width: 400px;       /* maksimalna širina loga */
-  max-height: 400px;      /* maksimalna visina loga */
-  object-fit: contain;    /* očuva proporcije loga */
-}
 
-/* Na manjim ekranima smanji logo */
-@media (max-width: 768px) {
-  footer img {
-    max-width: 220px;
-    max-height: 220px;
-    margin: 0 auto;
-    display: block;        /* centriraj na mobitelima */
-  }
-
-  footer .flex {
-    flex-direction: column;  /* poravnaj sadržaj u stupac */
-    text-align: center;
-  }
-}
-
-
-
-/* ===== FOOTER LOGO RESPONSIVE FIX (isti na svim stranicama) ===== */
-.footer-logo img {
-  width: auto;
-  height: auto;
-  max-width: 400px;
-  max-height: 400px;
-  object-fit: contain;
-}
-
-/* Na manjim ekranima (mobiteli) */
-@media (max-width: 768px) {
-  footer .flex {
-    flex-direction: column; /* prebacuje u stupac */
-    text-align: center;     /* centriraj tekst */
-    gap: 1.5rem;            /* dodaj razmak između teksta i loga */
-  }
-
-  .footer-logo img {
-    max-width: 220px;
-    max-height: 220px;
-    margin: 0 auto;
-    display: block;         /* centriraj sliku */
-  }
-}
 
 
 <!-- Google font -->
@@ -309,6 +260,7 @@ footer img {
     color: #231F20; /* tamno siva */
   }
 </style>
+
 
 
 
