@@ -684,7 +684,19 @@ Pohvale su stizale sa svih strana: iz Grada, od gradonačelnika, načelnika opć
   let currentYear = 2025;
 
   function renderYear(year) {
-    document.getElementById("yearTitle").textContent = `Regate ${year}`;
+    document.getElementById("yearTitle").innerHTML = `
+  <h3 style="
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 40px;
+    line-height: 1.2;
+    color: #41479C;
+    margin-bottom: 40px;">
+    Regate ${year}
+  </h3>
+`;
+
     const data = regateData[year];
 
     document.getElementById("yearContent").innerHTML = `
@@ -733,6 +745,7 @@ Pohvale su stizale sa svih strana: iz Grada, od gradonačelnika, načelnika opć
 </script>
 </body>
 </html>
+
 
 
 
