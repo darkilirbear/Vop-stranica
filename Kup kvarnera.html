@@ -233,13 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <!-- Naslov -->
       <h2 id="yearTitle" class="text-3xl md:text-4xl font-extrabold text-blue-800">
-        Regate 2025
+        Regate 2026
       </h2>
 
       <!-- Selector -->
       <select id="yearSelect" 
         class="px-4 py-2 rounded-lg font-semibold text-white bg-orange-500 hover:bg-orange-600 
                focus:outline-none focus:ring-2 focus:ring-orange-400 cursor-pointer">
+		<option value="2026">Regate 2026</option>
         <option value="2025">Regate 2025</option>
         <option value="2024">Regate 2024</option>
         <option value="2023">Regate 2023</option>
@@ -292,6 +293,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <script>
   const regateData = {
+	  2026: {
+  intro: `I ove godine, veslamo zajedno uz najljepšu obalu sjevernog Jadrana!<br><br>
+            6. SUP Kup Kvarnera 2026 okuplja rekreativce, natjecatelje i zaljubljenike u more iz cijele regije - na seriji dinamičnih i prijateljski natjecateljskih regata koje slave sport, zajedništvo i prirodu.<br><br>
+            Pridruži nam se - bilo da si spreman za postolje ili tek krećeš s prvim zaveslajem.<br><br>
+            Vidimo se na startnoj liniji!`,
+  events: [],
+  segments: [
+    {
+      title: "1. SUP Long distance Opatija - 11.04.2026. mul/port Opatija ",
+      content: `
+	  <p><strong>SUP Kup Kvarnera po drugi puta organizira Long distance regatu!</strong> Sjajne dužine za zagrijavanje i otvaranje sezone kupa.</strong></p>
+
+ <br><p><strong>Svi natjecatelji mogu računati na: </strong></p>
+ <ul class="list-disc list-inside text-left">
+<li>start paket</li>
+<li>ručak</li>
+<li>DJ glazbu</li>
+<li>besplatan parking</li>
+</ul>
+<br><p>Long distance regata najavljuje dobru vožnju, odličnu ekipu i jednu proljetnu SUP subotu za pamćenje.
+<br>Vidimo se na startu!
+<br><strong>Vidimo se na sljedećoj stanici Kupa!</strong></p>
+`
+    },
+    {
+      title: "5. SUP kup Ičići - 13.06.2026.",
+      content: `
+	  <p><strong>Peto izdanje Kupa Ičića vraća nas na jednu od najživljih lokacija SUP Kupa Kvarnera.</strong></p> Regata se odvija uz samu plažu,
+	  s beach startom i ciljem, u ambijentu prepunom kupača i prolaznika.
+
+<br><p>Zbog atraktivne lokacije i dobre atmosfere, regatu već tradicionalno vole i naši prijatelji iz Italije i Slovenije.
+
+<br>Benefit ove utrke uključuje blizina kampa i parking u hladu.
+
+<br><strong>Za glazbenu podlogu i opušteno ozračje brine se DJ.</strong></p>
+`
+    },
+    {
+      title: "2. Kačjak SUP regata - 27. i 28.6.2026. ",
+      content: `
+	   <p><strong> SUP Kup Kvarnera po drugi put stiže na Kačjak! </strong>
+	  Poznata lokacija, poznati duh – regata uz podršku sponzora Jadran Crikvenica – Hotels & Camps obećava dobru stazu, sjajnu atmosferu i bogate novčane nagrade.
+U subotu 27.06.2025. nas očekuje sprint u jutarnjim satima, dok u popodnevnim imamo regatu iznenađenja za sve natjecatelje i posjetioce 
+kampa. Nedjeljna regata 28.06.2025. biti će klasične dužine. Bodovi od subotnje regate sprint i bodovi nedjeljne 
+regate zbrajaju se za dodjelu nagrada.</p>
+
+<br><p><strong> Novčane nagrade za najbolje natjecatelje su osigurane od strane domaćina organizatora natjecanja.</strong></p>
+
+<br><p><strong>Svi natjecatelji mogu računati na:</strong></p>
+<ul class="list-disc list-inside text-left">
+<li>start paket</li>
+<li>obrok</li>
+<li>DJ glazbu</li>
+<li>besplatan parking</li>
+<li>promotivne cijene noćenja
+i sve to za oba dana natjecanja</li>
+
+<br><p>Kačjak regata najavljuje dobru vožnju, odličnu ekipu i još jednu ljetni SUP vikend za pamćenje.</p>
+<br><p>Vidimo se na startu!</p>
+<br><p><strong>Vidimo se na sljedećoj stanici Kupa!</strong></p>
+`
+    },
+    {
+      title: "5. Najviša SUP regata Fužine - 25. i 26.07.2026. ",
+      content: `
+	  <p><strong>SUP Kup Kvarnera vraća se u srce Gorskog kotara</strong> – na jezero Bajer, gdje nas čeka najviša regata sezone, u doslovnom i prenesenom smislu. Dvodnevni 
+	  program, sjajna priroda, odlična ekipa i miris šume – sve je spremno za još jedan gorski SUP spektakl.</p>
+
+
+
+<br><p><strong>Program regate:</strong></p>
+<ul class="list-disc list-inside text-left">
+<li>Subota: Sprint & Technical race – sistem ispadanja, brzo i dinamično</li>
+<li>Nedjelja: Kružna regata – duljine 2 / 4 / 6 km, prema kategoriji</li>
+
+<br><p><strong>Nagrade dolaze od lokalnih OPG-ova i partnera.</strong></p>
+
+<br><p>Hranu i dobru atmosferu osigurava Beach bar Hunter, a u organizaciji sudjeluju i Općina Fužine te TZ Fužine.</p>
+
+
+<br><p>Pridruži se i veslaj gdje zrak miriši na bor i jezero zrcali oblake.</p>
+<br><p><strong>Vidimo se na najvišoj točki ljeta! </strong></p>
+
+	  `
+    },
+    {
+      title: "Volosko SUP Open - 29.08.2026. ",
+      content: `
+	  <p>Volosko ponovno okuplja veslače, gledatelje i prijatelje SUP-a na regati koja se već više od desetljeća održava uz istu obalu – i s istim guštom.
+	  Regata zadnja u nizu uvijek predstavlja napetost za skupljanje zadnjih bodova kupa.</p>
+<br><p>Ovu regatu su pokrenuli <strong>DSNM Volosko i Caffe bar Vološćica </strong>, a mi s ponosom nastavljamo tu priču.</p>
+<br><p>Zahvaljujući specifičnoj konfiguraciji obale, Volosko nudi izvrsnu vidljivost za publiku i zanimljivu stazu za natjecatelje. A uz regatu – 
+tu je i ono po čemu je poznata:<strong> roštilj koji se ne propušta.</strong></p>
+
+<br><p>Osim start paketa i dobre zabave, najuspješnije natjecatelja ukupnog kupa očekuju novčane nagrade.</p>
+
+	  `
+    }
+  ]
+},
+
+	  
   2025: {
     intro: `I ove godine, veslamo zajedno uz najljepšu obalu sjevernog Jadrana!<br><br>
             5. SUP Kup Kvarnera 2025 okuplja rekreativce, natjecatelje i zaljubljenike u more iz cijele regije - na seriji dinamičnih i prijateljski natjecateljskih regata koje slave sport, zajedništvo i prirodu.<br><br>
@@ -681,7 +784,7 @@ Pohvale su stizale sa svih strana: iz Grada, od gradonačelnika, načelnika opć
   }
 };
 
-  let currentYear = 2025;
+  let currentYear = 2026;
 
   function renderYear(year) {
     document.getElementById("yearTitle").innerHTML = `
@@ -745,6 +848,7 @@ Pohvale su stizale sa svih strana: iz Grada, od gradonačelnika, načelnika opć
 </script>
 </body>
 </html>
+
 
 
 
